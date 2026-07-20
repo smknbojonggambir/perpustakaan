@@ -3,182 +3,438 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perpustakaan Digital SMK</title>
+    <title>Perpustakaan Digital SMK Negeri Bojonggambir</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { 
+            background-color: #f4f7f6; 
+            color: #333; 
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
-
-        body {
-            background-color: #f4f7f6;
-            color: #333;
+        
+        /* Navbar Area */
+        nav {
+            background-color: #112244;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .user-status {
+            font-size: 0.9rem;
+        }
+        .btn-auth {
+            background-color: #ff9800;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .btn-logout {
+            background-color: #e91e63;
         }
 
         header {
             background-color: #1e3c72;
             color: white;
-            padding: 2rem 1rem;
+            padding: 2.5rem 1rem;
             text-align: center;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+        header h1 { font-size: 2.2rem; margin-bottom: 0.5rem; }
+
+        .search-container {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
         }
 
-        header p {
-            font-size: 1.1rem;
-            opacity: 0.8;
+        .search-container input {
+            padding: 0.8rem 1.2rem;
+            width: 100%;
+            max-width: 400px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            outline: none;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
+        .search-container button {
+            padding: 0.8rem 1.5rem;
+            background-color: #ff9800;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
         }
 
-        .book-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 2rem;
+        .container { 
+            max-width: 1200px; 
+            margin: 2rem auto; 
+            padding: 0 1rem; 
+            flex-grow: 1;
+            width: 100%;
         }
+        
+        .status-message { text-align: center; margin-bottom: 2rem; font-size: 1.1rem; color: #666; }
+        .book-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 2rem; }
 
         .book-card {
             background: white;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
+            transition: transform 0.3s ease;
         }
+        .book-card:hover { transform: translateY(-5px); box-shadow: 0 8px 16px rgba(0,0,0,0.2); }
 
-        .book-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-        }
-
-        .book-cover {
-            height: 200px;
-            background-color: #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: #aaa;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .book-info {
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .category {
-            font-size: 0.8rem;
-            color: #1e3c72;
-            font-weight: 600;
-            text-transform: uppercase;
-            margin-bottom: 0.5rem;
-        }
-
-        .book-title {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: #222;
-        }
-
+        .book-cover { height: 250px; background-color: #eee; background-size: cover; background-position: center; border-bottom: 1px solid #ddd; }
+        .book-info { padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1; }
+        .book-author { font-size: 0.85rem; color: #1e3c72; font-weight: 600; margin-bottom: 0.5rem; }
+        .book-title { font-size: 1.1rem; margin-bottom: 1rem; color: #222; }
+        
         .btn-read {
             margin-top: auto;
             background-color: #2a5298;
             color: white;
             text-align: center;
-            padding: 0.8rem;
+            padding: 0.7rem;
             text-decoration: none;
             border-radius: 5px;
+            font-size: 0.9rem;
             font-weight: 600;
-            transition: background 0.3s;
+            cursor: pointer;
+            border: none;
         }
 
-        .btn-read:hover {
-            background-color: #1e3c72;
+        /* Modal Authentication */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
         }
-
-        footer {
-            text-align: center;
+        .modal-content {
+            background-color: white;
             padding: 2rem;
-            background-color: #222;
-            color: white;
-            margin-top: 3rem;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
         }
+        .modal-content h2 { margin-bottom: 1rem; color: #1e3c72; }
+        .modal-content input {
+            width: 100%;
+            padding: 0.7rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        .btn-cancel { background-color: #bbb; color: white; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer;}
+
+        footer { background-color: #222; color: white; text-align: center; padding: 1.5rem; margin-top: 3rem; font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
+    <!-- Topbar info login -->
+    <nav>
+        <div class="logo">SMKN Bojonggambir E-Lib</div>
+        <div id="authSection">
+            <span class="user-status" id="userStatus">Status: Belum Login.</span>
+            <button class="btn-auth" id="authBtn" onclick="openModal()">Login / Daftar</button>
+        </div>
+    </nav>
+
     <header>
-        <h1>Perpustakaan Digital SMK</h1>
-        <p>Membaca di Mana Saja, Kapan Saja - Modul & Buku Siswa Terpadu</p>
+        <h1>Perpustakaan Digital<br>SMK Negeri Bojonggambir</h1>
+        <p>Silahkan Login Menggunakan NIS Anda untuk Membaca Buku & Modul</p>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Cari judul buku atau mata pelajaran...">
+            <button onclick="cariBuku()">Cari Buku</button>
+        </div>
     </header>
 
     <div class="container">
-        <div class="book-grid">
-            
-            <!-- Buku 1 -->
-            <div class="book-card">
-                <div class="book-cover" style="background-image: url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60');"></div>
-                <div class="book-info">
-                    <span class="category">Teknik Komputer Jaringan</span>
-                    <h3 class="book-title">Dasar-dasar Pemrograman Web</h3>
-                    <!-- Tautan PDF Dummy untuk tes -->
-                    <a href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" target="_blank" class="btn-read">Baca PDF</a>
-                </div>
-            </div>
+        <div id="statusMessage" class="status-message">Memuat koleksi buku terbaru...</div>
+        <div class="book-grid" id="bookContainer"></div>
+    </div>
 
-            <!-- Buku 2 -->
-            <div class="book-card">
-                <div class="book-cover" style="background-image: url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60');"></div>
-                <div class="book-info">
-                    <span class="category">Akuntansi & Keuangan Lembaga</span>
-                    <h3 class="book-title">Praktikum Akuntansi Dasar</h3>
-                    <a href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" target="_blank" class="btn-read">Baca PDF</a>
-                </div>
+    <!-- Modal Login -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <h2 id="modalTitle">Login Siswa</h2>
+            <p style="font-size: 0.85rem; color:#666; margin-bottom:1rem;">Masukkan NIS terdaftar Anda untuk mulai membaca.</p>
+            <input type="text" id="nisInput" placeholder="Masukkan Nomor Induk Siswa (NIS)">
+            <div class="modal-actions">
+                <button class="btn-cancel" onclick="closeModal()">Batal</button>
+                <button class="btn-auth" onclick="prosesLogin()">Masuk</button>
             </div>
-
-            <!-- Buku 3 -->
-            <div class="book-card">
-                <div class="book-cover" style="background-image: url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60');"></div>
-                <div class="book-info">
-                    <span class="category">Teknik Otomotif</span>
-                    <h3 class="book-title">Pemeliharaan Mesin Kendaraan Ringan</h3>
-                    <a href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" target="_blank" class="btn-read">Baca PDF</a>
-                </div>
-            </div>
-
-            <!-- Buku 4 -->
-            <div class="book-card">
-                <div class="book-cover" style="background-image: url('https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60');"></div>
-                <div class="book-info">
-                    <span class="category">Desain Komunikasi Visual</span>
-                    <h3 class="book-title">Dasar Desain Grafis & Nirmana</h3>
-                    <a href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" target="_blank" class="btn-read">Baca PDF</a>
-                </div>
-            </div>
-
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2026 Perpustakaan Digital SMK. Dibuat untuk Keperluan Edukasi.</p>
+        <p>&copy; 2026 SMK Negeri Bojonggambir. Semua Hak Cipta Dilindungi.</p>
     </footer>
 
+    <script>
+        // GANTI INI DENGAN URL WEB APP GOOGLE APPS SCRIPT ANDA
+        const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxQ0volANGF-ZHd8jNIJ_1t6Oxa42ZIIZkk63ral-tywnbsy6X182Tu3rUZw6FkaKOMnA/exec";
+
+        // Database Siswa Internal (Data yang Anda Berikan)
+        const databaseSiswa = [
+            {nis:"102505330", nama:"AIP PAEJA", kelas:"X APHP"},
+            {nis:"113010313", nama:"DEVA", kelas:"X APHP"},
+            {nis:"115333362", nama:"ENDAH SITI NURJANAH", kelas:"X APHP"},
+            {nis:"109496996", nama:"ERIK MUHAMAD RIJAL", kelas:"X APHP"},
+            {nis:"108611670", nama:"ERNI NURWASILAH", kelas:"X APHP"},
+            {nis:"104097487", nama:"FARHAN MAULANA SM", kelas:"X APHP"},
+            {nis:"101638636", nama:"HILMA PARHATUL PAUZIAH", kelas:"X APHP"},
+            {nis:"103656908", nama:"INDRI KHOERUNNISA", kelas:"X APHP"},
+            {nis:"104493529", nama:"MUHAMAD FAUZAN MUBAROK", kelas:"X APHP"},
+            {nis:"116152772", nama:"MUHAMAD YARIS RIYADI", kelas:"X APHP"},
+            {nis:"119065856", nama:"NADIFHA AZAHRA", kelas:"X APHP"},
+            {nis:"101552704", nama:"NEISA FITRI PUTRI", kelas:"X APHP"},
+            {nis:"102239459", nama:"RADITHIYA RAMADAN", kelas:"X APHP"},
+            {nis:"114697638", nama:"RIFKI", kelas:"X APHP"},
+            {nis:"106842397", nama:"SINDI NURUL AINI", kelas:"X APHP"},
+            {nis:"92235974",  nama:"SITI NURAISYAH", kelas:"X APHP"},
+            {nis:"114249280", nama:"WINDI MAULIDIA HANDAYANI", kelas:"X APHP"},
+            {nis:"108054835", nama:"ACEP LUCKI PIRMANSYAH", kelas:"X DKV1"},
+            {nis:"105072633", nama:"AGUNG SUPRIYANTO", kelas:"X DKV1"},
+            {nis:"112370694", nama:"ALYN AYU ANANDA", kelas:"X DKV1"},
+            {nis:"102173433", nama:"ANDIKA PUTRA", kelas:"X DKV1"},
+            {nis:"102282946", nama:"ANGGI ANGGARA", kelas:"X DKV1"},
+            {nis:"102736551", nama:"ARYA IHSAN MAULANA", kelas:"X DKV1"},
+            {nis:"112798692", nama:"DEDE AZMI", kelas:"X DKV1"},
+            {nis:"1111033723", nama:"ELSI RAHMAWATI", kelas:"X DKV1"},
+            {nis:"3111559177", nama:"FAIZ MAULANA", kelas:"X DKV1"},
+            {nis:"104289728", nama:"FIKI ASRIYANTO", kelas:"X DKV1"},
+            {nis:"103708177", nama:"IHSAN NUGRAHA", kelas:"X DKV1"},
+            {nis:"108323425", nama:"IKLIMA AMALIYA FADHILAH", kelas:"X DKV1"},
+            {nis:"107113537", nama:"MEY DINA ASIFA", kelas:"X DKV1"},
+            {nis:"102901737", nama:"MIFTAHUL ULUM", kelas:"X DKV1"},
+            {nis:"3108550249", nama:"MUHAMAD FARUQ AL PAUJI", kelas:"X DKV1"},
+            {nis:"112401972", nama:"MUHAMMAD ARIF PRASTIA", kelas:"X DKV1"},
+            {nis:"107132898", nama:"NOPITA WULANDARI", kelas:"X DKV1"},
+            {nis:"108896540", nama:"NOVI NUR AJIJAH", kelas:"X DKV1"},
+            {nis:"107051606", nama:"PAHRI", kelas:"X DKV1"},
+            {nis:"106503140", nama:"PAHRU ROJI", kelas:"X DKV1"},
+            {nis:"102604370", nama:"PAHRUL GUNAWAN", kelas:"X DKV1"},
+            {nis:"109917041", nama:"PINA HOERUNISA", kelas:"X DKV1"},
+            {nis:"118133303", nama:"RAHMAWATI", kelas:"X DKV1"},
+            {nis:"3108098814", nama:"REGITA ARIN SHALIHALANTI", kelas:"X DKV1"},
+            {nis:"101977302", nama:"REHAN MAULANA", kelas:"X DKV1"},
+            {nis:"109051265", nama:"RIFKI ZAINUL IHSAN", kelas:"X DKV1"},
+            {nis:"101531146", nama:"RIZHAL ROHIMAT", kelas:"X DKV1"},
+            {nis:"102044237", nama:"RIZWAN", kelas:"X DKV1"},
+            {nis:"104788939", nama:"SAFITRI RAHMAWATI", kelas:"X DKV1"},
+            {nis:"96340579",  nama:"SARAN SUCI ARYANI", kelas:"X DKV1"},
+            {nis:"101542368", nama:"SIFA NURAENI", kelas:"X DKV1"},
+            {nis:"111818019", nama:"SITI NURFAZWA", kelas:"X DKV1"},
+            {nis:"102763364", nama:"SONIA LESTARI", kelas:"X DKV1"},
+            {nis:"111741605", nama:"SULISTIAWATI", kelas:"X DKV1"},
+            {nis:"105080581", nama:"AHMAD SHIDIQ RAMDLANI", kelas:"X DKV2"},
+            {nis:"103107789", nama:"AKILA ALPIN SYAPUTRA", kelas:"X DKV2"},
+            {nis:"104184916", nama:"ANGGARA SALMAN NURALIF", kelas:"X DKV2"},
+            {nis:"103960929", nama:"ARMAN MAULANA", kelas:"X DKV2"},
+            {nis:"108824061", nama:"D PILAN MAULANA RAMDANI", kelas:"X DKV2"},
+            {nis:"109065831", nama:"DANDI RADITYA FAUZAN", kelas:"X DKV2"},
+            {nis:"129181073", nama:"DEDE FARID MULYANA", kelas:"X DKV2"},
+            {nis:"117571105", nama:"DENTA MIRA AULIA", kelas:"X DKV2"},
+            {nis:"113941697", nama:"GILAR JAIMUL RIZAL", kelas:"X DKV2"},
+            {nis:"109823580", nama:"HENDRI IRAWAN", kelas:"X DKV2"},
+            {nis:"104832815", nama:"ILA CAHYA", kelas:"X DKV2"},
+            {nis:"102304919", nama:"INDIRA KARUNIA ALIFA", kelas:"X DKV2"},
+            {nis:"111889229", nama:"JENITA", kelas:"X DKV2"},
+            {nis:"109578918", nama:"MU`MIN", kelas:"X DKV2"},
+            {nis:"105464127", nama:"MUHAMAD ANDRIYANSAH", kelas:"X DKV2"},
+            {nis:"102264480", nama:"MUHAMAD RAFFI", kelas:"X DKV2"},
+            {nis:"103090880", nama:"MUHAMMAD ALI RAMDANI", kelas:"X DKV2"},
+            {nis:"108782868", nama:"NAZWA JULIANTI", kelas:"X DKV2"},
+            {nis:"112431154", nama:"NENG DINA", kelas:"X DKV2"},
+            {nis:"107953987", nama:"PAHRI NURAHMAD JAELANI", kelas:"X DKV2"},
+            {nis:"108818255", nama:"PUTRI RAHMANIA", kelas:"X DKV2"},
+            {nis:"119924921", nama:"PUTRI WULANSARI", kelas:"X DKV2"},
+            {nis:"101861756", nama:"RAFI ABDUL BAIS", kelas:"X DKV2"},
+            {nis:"112912427", nama:"RAHMITA AL-ISLAH", kelas:"X DKV2"},
+            {nis:"109290470", nama:"RANGGA NURUL IMAN", kelas:"X DKV2"},
+            {nis:"109975075", nama:"REHAN ELIO ADITIYA", kelas:"X DKV2"},
+            {nis:"97454991",  nama:"REHAN MUHAMAD RAMDANI", kelas:"X DKV2"},
+            {nis:"92745444",  nama:"RESKY AGUNG NUGRAHA", kelas:"X DKV2"},
+            {nis:"106910289", nama:"RISKYA NURLAELA", kelas:"X DKV2"},
+            {nis:"113443677", nama:"SAKILA PERMATASARI", kelas:"X DKV2"},
+            {nis:"111729342", nama:"SALWA NURWASILAH", kelas:"X DKV2"},
+            {nis:"105480558", nama:"SILVI RISTIYANI", kelas:"X DKV2"},
+            {nis:"108752156", nama:"SITI SOFIAH", kelas:"X DKV2"},
+            {nis:"101253840", nama:"TANZIL JAENUL FIKRI", kelas:"X DKV2"},
+            {nis:"106268251", nama:"TIARA NURUL ALIFA", kelas:"X DKV2"},
+            {nis:"104788939", nama:"WINA WIDIAWATI", kelas:"X DKV2"}
+        ];
+
+        let currentUser = null;
+
+        // Cek sesi login saat halaman dimuat
+        window.onload = () => {
+            const savedUser = localStorage.getItem('siswaSession');
+            if (savedUser) {
+                currentUser = JSON.parse(savedUser);
+                updateAuthUI();
+            }
+            fetchBooks('buku kejuruan SMK');
+        };
+
+        function openModal() {
+            document.getElementById('loginModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('loginModal').style.display = 'none';
+            document.getElementById('nisInput').value = '';
+        }
+
+        function prosesLogin() {
+            const nisValue = document.getElementById('nisInput').value.trim();
+            
+            // Cari data siswa di database internal berdasarkan NIS
+            const siswa = databaseSiswa.find(s => s.nis === nisValue);
+
+            if (siswa) {
+                currentUser = siswa;
+                localStorage.setItem('siswaSession', JSON.stringify(siswa));
+                updateAuthUI();
+                closeModal();
+                alert(`Selamat Datang, ${siswa.nama} (${siswa.kelas})!`);
+            } else {
+                alert("NIS tidak terdaftar! Periksa kembali nomor NIS Anda atau hubungi admin perpustakaan.");
+            }
+        }
+
+        function prosesLogout() {
+            currentUser = null;
+            localStorage.removeItem('siswaSession');
+            document.getElementById('userStatus').textContent = "Status: Belum Login.";
+            const btn = document.getElementById('authBtn');
+            btn.textContent = "Login / Daftar";
+            btn.className = "btn-auth";
+            btn.onclick = openModal;
+            alert("Anda telah keluar.");
+        }
+
+        function updateAuthUI() {
+            if (currentUser) {
+                document.getElementById('userStatus').textContent = `Halo, ${currentUser.nama} (${currentUser.kelas})`;
+                const btn = document.getElementById('authBtn');
+                btn.textContent = "Logout";
+                btn.className = "btn-auth btn-logout";
+                btn.onclick = prosesLogout;
+            }
+        }
+
+        // Fungsi mencatat riwayat baca ke Google Sheet
+        async function rekamAktivitasBaca(judulBuku, linkBuku) {
+            if (!currentUser) return;
+
+            // Mengirim data menggunakan parameter GET agar tidak terkena kendala CORS
+            const urlPerekam = `${APPS_SCRIPT_URL}?nis=${encodeURIComponent(currentUser.nis)}&nama=${encodeURIComponent(currentUser.nama)}&kelas=${encodeURIComponent(currentUser.kelas)}&judul=${encodeURIComponent(judulBuku)}&link=${encodeURIComponent(linkBuku)}`;
+            
+            try {
+                // Proses pengiriman di latar belakang (Background fetch)
+                await fetch(urlPerekam, { mode: 'no-cors' });
+                console.log("Aktivitas membaca berhasil direkam.");
+            } catch (err) {
+                console.error("Gagal mengirim rekaman data:", err);
+            }
+        }
+
+        function aksiBacaBuku(judul, link) {
+            if (!currentUser) {
+                alert("Perhatian! Anda harus Login menggunakan NIS terlebih dahulu sebelum membaca buku.");
+                openModal();
+            } else {
+                // 1. Kirim data ke Google Sheet
+                rekamAktivitasBaca(judul, link);
+                // 2. Buka jendela preview buku
+                window.open(link, '_blank');
+            }
+        }
+
+        // FUNGSI LOAD API GOOGLE BOOKS
+        async function fetchBooks(keyword) {
+            const container = document.getElementById('bookContainer');
+            const statusMsg = document.getElementById('statusMessage');
+            container.innerHTML = '';
+            statusMsg.textContent = 'Mencari koleksi tentang "' + keyword + '"...';
+
+            try {
+                const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${keyword}&maxResults=12`);
+                const data = await response.json();
+
+                if (!data.items) {
+                    statusMsg.textContent = 'Buku tidak ditemukan. Coba kata kunci lain.';
+                    return;
+                }
+
+                statusMsg.textContent = `Menampilkan hasil untuk: "${keyword}"`;
+
+                data.items.forEach(item => {
+                    const info = item.volumeInfo;
+                    const title = info.title || 'Judul Tidak Diketahui';
+                    const author = info.authors ? info.authors.join(', ') : 'Penulis Tidak Diketahui';
+                    let cover = 'https://via.placeholder.com/150x200?text=Tidak+Ada+Sampul';
+                    if (info.imageLinks) {
+                        cover = info.imageLinks.thumbnail.replace('http:', 'https:');
+                    }
+                    const previewLink = info.previewLink || '#';
+
+                    const bookCard = document.createElement('div');
+                    bookCard.className = 'book-card';
+                    bookCard.innerHTML = `
+                        <div class="book-cover" style="background-image: url('${cover}');"></div>
+                        <div class="book-info">
+                            <span class="book-author">${author}</span>
+                            <h3 class="book-title">${title}</h3>
+                            <button class="btn-read" onclick="aksiBacaBuku('${title.replace(/'/g, "\\'")}', '${previewLink}')">Baca Buku</button>
+                        </div>
+                    `;
+                    container.appendChild(bookCard);
+                });
+
+            } catch (error) {
+                console.error('Error:', error);
+                statusMsg.textContent = 'Gagal memuat data. Periksa internet Anda.';
+            }
+        }
+
+        function cariBuku() {
+            const inputVal = document.getElementById('searchInput').value;
+            if (inputVal.trim() !== '') fetchBooks(inputVal);
+        }
+
+        document.getElementById('searchInput').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') cariBuku();
+        });
+    </script>
 </body>
 </html>
