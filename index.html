@@ -206,13 +206,38 @@
     </footer>
 
     <script>
-        // 1. DATA BUKU UTAMA (Manual untuk kurikulum SMK)
+        // 1. DATA BUKU UTAMA (Menggunakan layanan pembuat cover otomatis dan link resmi yang aktif)
         const localBooks = [
-            { judul: "Informatika SMK Kelas X", cat: "TKJ/RPL", img: "https://buku.kemdikbud.go.id/assets/pelajaran/Informatika-BG-KLS-X.jpg", link: "https://buku.kemdikbud.go.id/katalog/informatika-untuk-smk-kelas-x" },
-            { judul: "Dasar Teknik Otomotif", cat: "TSM/TKR", img: "https://buku.kemdikbud.go.id/assets/pelajaran/Dasar-dasar-Teknik-Otomotif-BS-KLS-X-1.jpg", link: "https://buku.kemdikbud.go.id/katalog/dasar-dasar-teknik-otomotif-semester-1" },
-            { judul: "Dasar Akuntansi & Keuangan", cat: "AKL", img: "https://buku.kemdikbud.go.id/assets/pelajaran/Dasar-dasar-Akuntansi-dan-Keuangan-Lembaga-BS-KLS-X-1.jpg", link: "https://buku.kemdikbud.go.id/katalog/dasar-dasar-akuntansi-dan-keuangan-lembaga-semester-1" },
-            { judul: "Bahasa Indonesia", cat: "WAJIB", img: "https://buku.kemdikbud.go.id/assets/pelajaran/Bahasa-Indonesia-BS-KLS-X.jpg", link: "https://buku.kemdikbud.go.id/katalog/Cerdas-Cergas-Berbahasa-dan-Bersastra-Indonesia-untuk-SMA-SMK-Kelas-X" },
-            { judul: "Matematika SMK X", cat: "WAJIB", img: "https://buku.kemdikbud.go.id/assets/pelajaran/Matematika-BS-KLS-X.jpg", link: "https://buku.kemdikbud.go.id/katalog/matematika-untuk-smasmk-kelas-x" }
+            { 
+                judul: "Informatika SMK Kelas X", 
+                cat: "TKJ / RPL", 
+                img: "https://placehold.co/300x450/1e3a8a/ffffff?text=Informatika%5CnSMK+Kelas+X", 
+                link: "https://buku.kemdikbud.go.id/katalog/informatika-untuk-smasmk-kelas-x" 
+            },
+            { 
+                judul: "Dasar-Dasar Teknik Otomotif", 
+                cat: "TSM / TKR", 
+                img: "https://placehold.co/300x450/e11d48/ffffff?text=Teknik%5CnOtomotif", 
+                link: "https://buku.kemdikbud.go.id/katalog/dasar-dasar-teknik-otomotif-semester-1-untuk-smkmak-kelas-x" 
+            },
+            { 
+                judul: "Dasar-Dasar Akuntansi", 
+                cat: "AKL", 
+                img: "https://placehold.co/300x450/16a34a/ffffff?text=Akuntansi%5CnKeuangan", 
+                link: "https://buku.kemdikbud.go.id/katalog/dasar-dasar-akuntansi-dan-keuangan-lembaga-semester-1-untuk-smkmak-kelas-x" 
+            },
+            { 
+                judul: "Bahasa Indonesia", 
+                cat: "WAJIB", 
+                img: "https://placehold.co/300x450/ca8a04/ffffff?text=Bahasa%5CnIndonesia", 
+                link: "https://buku.kemdikbud.go.id/katalog/cerdas-cergas-berbahasa-dan-bersastra-indonesia-untuk-smasmk-kelas-x-1" 
+            },
+            { 
+                judul: "Katalog Pusat Perbukuan", 
+                cat: "REFERENSI", 
+                img: "https://placehold.co/300x450/475569/ffffff?text=Pusat%5CnPerbukuan", 
+                link: "https://buku.kemdikbud.go.id/" 
+            }
         ];
 
         // Tampilkan Buku Lokal
@@ -226,7 +251,7 @@
         function createCard(title, cat, img, link) {
             return `
                 <div class="book-card">
-                    <img src="${img}" alt="Cover" onerror="this.src='https://via.placeholder.com/200x280?text=Buku+SMK'">
+                    <img src="${img}" alt="Cover" onerror="this.src='https://placehold.co/300x450/cccccc/000000?text=Buku+SMK'">
                     <div class="book-info">
                         <span class="book-tag">${cat}</span>
                         <div class="book-title">${title}</div>
@@ -250,7 +275,7 @@
             title.innerText = `Hasil Pencarian: "${query}"`;
 
             try {
-                // Modifikasi: Menambahkan '&langRestrict=id' agar mayoritas hasil berbahasa Indonesia
+                // Memprioritaskan hasil berbahasa Indonesia
                 const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}&langRestrict=id&maxResults=20&orderBy=relevance`);
                 const data = await response.json();
 
@@ -261,9 +286,11 @@
                         const info = item.volumeInfo;
                         const bookTitle = info.title || "Judul Tidak Diketahui";
                         const cat = info.categories ? info.categories[0] : "Buku Umum";
-                        // Memastikan link gambar menggunakan HTTPS agar tidak diblokir browser
-                        let img = info.imageLinks ? info.imageLinks.thumbnail : "https://via.placeholder.com/200x280?text=No+Cover";
+                        
+                        // Menangani gambar cover dari API dan mengubahnya ke HTTPS
+                        let img = info.imageLinks ? info.imageLinks.thumbnail : "https://placehold.co/300x450/cccccc/000000?text=Tanpa+Cover";
                         img = img.replace(/^http:\/\//i, 'https://'); 
+                        
                         const link = info.previewLink || "#"; 
 
                         grid.innerHTML += createCard(bookTitle, cat, img, link);
@@ -278,7 +305,7 @@
             }
         }
 
-        // Fitur tambahan: Memungkinkan pencarian dengan menekan tombol "Enter" di keyboard
+        // Pencarian dengan menekan tombol "Enter" di keyboard
         document.getElementById('searchInput').addEventListener('keypress', function (e) {
             if (e.key === 'Enter') {
                 searchGlobalBooks();
@@ -288,7 +315,6 @@
         // Jalankan saat load awal
         window.onload = () => {
             loadLocalBooks();
-            // Default search agar halaman tidak kosong
             document.getElementById('searchInput').value = "Teknologi Informasi";
             searchGlobalBooks();
         };
