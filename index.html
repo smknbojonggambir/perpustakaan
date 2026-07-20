@@ -1,810 +1,297 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
- <head><script>window["__codeletBootstrap__"]=JSON.parse('{"A":"A","B":"20260717-05-8209e4e"}');</script><script src="/_sdk/f432b76fb310b513.telemetry_sdk.js" integrity="sha512-9FJQ55EKmmqhyyik8BhrMVfm0+iYYfb8uOlRsjtkxJMEI97qOVEI4PnHohDjQAtvAep0IOEpdQ64eki0sz62ug=="></script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Perpustakaan Digital SMK Negeri Bojonggambir</title>
-  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&amp;family=Fraunces:opsz,wght@9..144,600;9..144,700&amp;display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --navy: #0d47a1;
-      --navy-deep: #082f6b;
-      --sky: #eaf4ff;
-      --gold: #f6b800;
-      --ink: #123153;
-      --muted: #64748b;
-      --paper: #ffffff;
-      --soft: #f6f9fd;
-      --line: #dbe7f5;
-    }
-    * { scroll-behavior: smooth; }
-    body {
-      width: 100%;
-      margin: 0;
-      font-family: "DM Sans", sans-serif;
-      color: var(--ink);
-      background: var(--soft);
-      transition: background .25s ease, color .25s ease;
-    }
-    body.dark {
-      --paper: #10223a;
-      --soft: #08162a;
-      --sky: #102b4a;
-      --ink: #edf5ff;
-      --muted: #a6b7cc;
-      --line: #274763;
-      background: var(--soft);
-    }
-    .heading-font { font-family: "Fraunces", serif; }
-    .nav-glass {
-      background: color-mix(in srgb, var(--paper) 88%, transparent);
-      border-bottom: 1px solid color-mix(in srgb, var(--line) 80%, transparent);
-      backdrop-filter: blur(16px);
-    }
-    .section-shell { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 1.25rem; }
-    .card-surface {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      box-shadow: 0 14px 36px rgba(17, 52, 91, .08);
-    }
-    .dark .card-surface { box-shadow: 0 14px 36px rgba(0, 0, 0, .2); }
-    .gold-line { width: 52px; height: 4px; background: var(--gold); border-radius: 999px; }
-    .hero-overlay {
-      background: linear-gradient(90deg, rgba(4, 29, 70, .9) 0%, rgba(4, 29, 70, .72) 45%, rgba(4, 29, 70, .27) 100%);
-    }
-    .ticker-track { animation: ticker 28s linear infinite; }
-    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-52%); } }
-    .reveal { animation: rise .7s both; }
-    @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
-    .gallery-slide { display: none; }
-    .gallery-slide.active { display: block; animation: fade .35s ease; }
-    @keyframes fade { from { opacity: .2; } to { opacity: 1; } }
-    .testimonial { display: none; }
-    .testimonial.active { display: block; }
-    .faq-answer { display: none; }
-    .faq-item.open .faq-answer { display: block; }
-    .faq-item.open .faq-plus { transform: rotate(45deg); }
-    .modal { display: none; }
-    .modal.show { display: flex; }
-    .book-cover { aspect-ratio: 3 / 4; object-fit: cover; }
-    .dark .text-slate-900, .dark .text-slate-800, .dark .text-slate-700 { color: var(--ink) !important; }
-    .dark .text-slate-600, .dark .text-slate-500 { color: var(--muted) !important; }
-    .dark input, .dark select { background: #0b1d34 !important; color: var(--ink) !important; border-color: var(--line) !important; }
-    .dark .bg-white { background-color: var(--paper) !important; }
-    .dark .bg-slate-50 { background-color: var(--soft) !important; }
-  </style>
-  <script src="/_sdk/e3937a0574eb2d69.data_sdk.js" type="text/javascript" integrity="sha512-xbp/ACqEQy1aDxYMtXTrR3y5MUbzxuggRR/9sD48Gl4VhLMMCiAHsxMaFV6DTdeBpR6ymF+t2zhPKYkWM3+Jfw=="></script>
-  <script src="/_sdk/9432170dbd2ae0df.resizing_sdk.js" type="text/javascript" integrity="sha512-FeT+58sb1f9ejWPWFjCbJvTT+SDwGV+ngrHUnlO7TWEOoqwOLj6p256kO3vOL7DIWl1cIgrobiof8v2bOigwPg=="></script>
- </head>
- <body data-template-id="__page-root">
-  <header class="sticky top-0 z-40 nav-glass">
-   <div class="section-shell">
-    <div class="flex h-20 items-center justify-between gap-4">
-     <a href="#beranda" class="flex min-w-0 items-center gap-3" aria-label="Ke beranda">
-      <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white overflow-hidden shadow-lg border border-slate-250"><img src="https://placehold.co/100x100?text=Logo" data-template-id="header-logo" class="canva-image h-full w-full object-contain" loading="lazy">
-      </div>
-      <div class="min-w-0">
-       <p data-template-id="brand-kicker" class="canva-text text-[10px] sm:text-xs font-bold tracking-[.18em] text-[#0D47A1]"></p>
-       <h1 data-template-id="brand-name" class="canva-text text-xs sm:text-sm font-extrabold text-slate-900"></h1>
-      </div></a>
-     <nav class="hidden lg:flex items-center gap-5 text-sm font-semibold text-slate-600" aria-label="Navigasi utama">
-      <a href="#beranda" class="hover:text-[#0D47A1]">Beranda</a> <a href="#profil" class="hover:text-[#0D47A1]">Profil</a> <a href="#katalog" class="hover:text-[#0D47A1]">Katalog</a> <a href="#ebook" class="hover:text-[#0D47A1]">E-Library</a> <a href="#berita" class="hover:text-[#0D47A1]">Berita</a> <a href="#literasi" class="hover:text-[#0D47A1]">Literasi</a> <a href="#kontak" class="hover:text-[#0D47A1]">Kontak</a>
-     </nav>
-     <div class="flex items-center gap-2">
-      <button id="dark-toggle" type="button" class="rounded-xl border border-slate-200 p-2.5 text-slate-700 transition hover:border-[#0D47A1] hover:text-[#0D47A1] focus:outline-none focus:ring-2 focus:ring-[#F6B800]" aria-label="Aktifkan mode gelap"> <i data-lucide="moon" class="h-5 w-5"></i> </button> <button id="login-button" data-template-id="login-button" type="button" class="canva-button hidden sm:inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-bold shadow-sm transition hover:brightness-95 focus:outline-none focus:ring-2 focus:ring-[#F6B800]"> <i data-lucide="log-in" class="h-4 w-4"></i> </button> <button id="mobile-menu-toggle" type="button" class="lg:hidden rounded-xl border border-slate-200 p-2.5 text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#F6B800]" aria-label="Buka menu"> <i data-lucide="menu" class="h-5 w-5"></i> </button>
-     </div>
-    </div>
-    <nav id="mobile-menu" class="hidden border-t border-slate-200 py-4 lg:hidden" aria-label="Navigasi mobile">
-     <div class="grid grid-cols-2 gap-3 text-sm font-semibold text-slate-700">
-      <a href="#beranda">Beranda</a><a href="#profil">Profil</a><a href="#katalog">Katalog Buku</a><a href="#ebook">E-Library</a> <a href="#berita">Berita</a><a href="#literasi">Literasi</a><a href="#pengumuman">Pengumuman</a><a href="#kontak">Kontak</a>
-     </div>
-    </nav>
-   </div>
-  </header>
-  <main>
-   <section id="beranda" class="relative overflow-hidden">
-    <img src="https://placehold.co/1200x800?text=Hero+Image" data-template-id="hero-image" loading="lazy" class="canva-image absolute inset-0 h-full w-full object-cover">
-    <div class="hero-overlay absolute inset-0"></div>
-    <div class="section-shell relative flex min-h-[calc(72*min(var(--vh,1vh),1vh))] items-center py-20">
-     <div class="max-w-3xl text-white reveal">
-      <div data-template-id="hero-badge" class="canva-tag mb-6 inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-bold">
-       <i data-lucide="sparkles" class="h-4 w-4"></i>
-      </div>
-      <p data-template-id="hero-welcome" class="canva-text mb-3 text-lg font-semibold text-blue-100"></p>
-      <h2 data-template-id="hero-title" class="canva-text heading-font max-w-3xl text-4xl font-bold leading-tight sm:text-6xl"></h2>
-      <p data-template-id="hero-description" class="canva-text mt-6 max-w-2xl text-lg leading-8 text-blue-50"></p>
-      <div class="mt-8 flex flex-wrap gap-3">
-       <a data-template-id="hero-search-button" class="canva-button inline-flex items-center gap-2 rounded-xl px-5 py-3.5 font-bold shadow-lg transition hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-white" href="#katalog"><i data-lucide="search" class="h-5 w-5"></i></a> <a data-template-id="hero-ebook-button" class="canva-button inline-flex items-center gap-2 rounded-xl border px-5 py-3.5 font-bold transition hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white" href="#ebook"><i data-lucide="book-open" class="h-5 w-5"></i></a> <button id="hero-login" data-template-id="hero-login-button" type="button" class="canva-button inline-flex items-center gap-2 rounded-xl border px-5 py-3.5 font-bold transition hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white"><i data-lucide="key-round" class="h-5 w-5"></i></button>
-      </div>
-     </div>
-    </div>
-   </section>
-   <section class="overflow-hidden bg-[#0D47A1] py-3 text-white">
-    <div class="ticker-track flex w-max items-center gap-8 whitespace-nowrap text-sm font-medium">
-     <span data-template-id="running-text" class="canva-text"></span> <span aria-hidden="true">•</span> <span>Selamat datang di Perpustakaan Digital SMK Negeri Bojonggambir</span> <span aria-hidden="true">•</span> <span>Buku baru telah tersedia</span> <span aria-hidden="true">•</span> <span>Jadwal layanan Senin–Jumat pukul 07.00–15.30 WIB</span>
-    </div>
-   </section>
-   <section class="py-14">
-    <div class="section-shell">
-     <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-      <article data-template-id="stat-books-card" class="canva-card card-surface rounded-2xl p-5">
-       <div class="flex items-center gap-4">
-        <div class="rounded-xl bg-blue-100 p-3 text-[#0D47A1]"><i data-lucide="library" class="h-6 w-6"></i>
-        </div>
-        <div>
-         <p data-template-id="stat-books-label" class="canva-text text-sm font-semibold text-slate-500"></p>
-         <p data-template-id="stat-books-value" class="canva-text text-2xl font-extrabold text-slate-900"></p>
-        </div>
-       </div>
-      </article>
-      <article data-template-id="stat-members-card" class="canva-card card-surface rounded-2xl p-5">
-       <div class="flex items-center gap-4">
-        <div class="rounded-xl bg-amber-100 p-3 text-amber-700"><i data-lucide="graduation-cap" class="h-6 w-6"></i>
-        </div>
-        <div>
-         <p data-template-id="stat-members-label" class="canva-text text-sm font-semibold text-slate-500"></p>
-         <p data-template-id="stat-members-value" class="canva-text text-2xl font-extrabold text-slate-900"></p>
-        </div>
-       </div>
-      </article>
-      <article data-template-id="stat-ebooks-card" class="canva-card card-surface rounded-2xl p-5">
-       <div class="flex items-center gap-4">
-        <div class="rounded-xl bg-cyan-100 p-3 text-cyan-700"><i data-lucide="tablet" class="h-6 w-6"></i>
-        </div>
-        <div>
-         <p data-template-id="stat-ebooks-label" class="canva-text text-sm font-semibold text-slate-500"></p>
-         <p data-template-id="stat-ebooks-value" class="canva-text text-2xl font-extrabold text-slate-900"></p>
-        </div>
-       </div>
-      </article>
-      <article data-template-id="stat-loans-card" class="canva-card card-surface rounded-2xl p-5">
-       <div class="flex items-center gap-4">
-        <div class="rounded-xl bg-emerald-100 p-3 text-emerald-700"><i data-lucide="repeat-2" class="h-6 w-6"></i>
-        </div>
-        <div>
-         <p data-template-id="stat-loans-label" class="canva-text text-sm font-semibold text-slate-500"></p>
-         <p data-template-id="stat-loans-value" class="canva-text text-2xl font-extrabold text-slate-900"></p>
-        </div>
-       </div>
-      </article>
-     </div>
-    </div>
-   </section>
-   <section id="katalog" class="py-16">
-    <div class="section-shell">
-     <div class="mb-8 max-w-2xl">
-      <div class="gold-line mb-4"></div>
-      <p data-template-id="catalog-kicker" class="canva-text text-sm font-extrabold uppercase tracking-[.18em] text-[#0D47A1]"></p>
-      <h2 data-template-id="catalog-title" class="canva-text heading-font mt-2 text-3xl font-bold text-slate-900 sm:text-4xl"></h2>
-      <p data-template-id="catalog-description" class="canva-text mt-3 leading-7 text-slate-600"></p>
-     </div>
-     <div data-template-id="search-panel" class="canva-panel card-surface rounded-3xl p-5 sm:p-7">
-      <form id="catalog-form" class="grid gap-4 lg:grid-cols-[1fr_210px_auto]" novalidate>
-       <div>
-        <label for="book-search" data-template-id="search-label" class="canva-text mb-2 block text-sm font-bold text-slate-700"></label>
-        <div class="relative">
-         <i data-lucide="search" class="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400"></i> <input id="book-search" data-template-id="search-input" class="canva-input w-full rounded-xl border border-slate-200 py-3.5 pl-12 pr-4 outline-none transition focus:border-[#0D47A1] focus:ring-4 focus:ring-blue-100" type="search">
-        </div>
-       </div>
-       <div>
-        <label for="category-filter" data-template-id="category-label" class="canva-text mb-2 block text-sm font-bold text-slate-700"></label> <select id="category-filter" class="w-full rounded-xl border border-slate-200 px-4 py-3.5 outline-none focus:border-[#0D47A1] focus:ring-4 focus:ring-blue-100"> <option value="">Semua kategori</option> <option value="Teknologi">Teknologi</option> <option value="Sains">Sains</option> <option value="Sastra">Sastra</option> <option value="Pengembangan Diri">Pengembangan Diri</option> </select>
-       </div><button data-template-id="search-submit" class="canva-button mt-auto inline-flex h-[52px] items-center justify-center gap-2 rounded-xl px-5 font-bold transition hover:brightness-95 focus:outline-none focus:ring-2 focus:ring-[#F6B800]" type="submit"><i data-lucide="search" class="h-5 w-5"></i></button>
-      </form>
-      <p id="search-message" class="mt-4 text-sm font-medium text-slate-500" aria-live="polite">Menampilkan seluruh koleksi contoh.</p>
-     </div>
-     <div id="catalog-results" class="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-      <!-- Buku 1 -->
-      <article data-template-id="cat-book-1-card" class="catalog-card card-surface overflow-hidden rounded-2xl">
-       <div class="flex gap-4 p-4">
-        <img src="https://placehold.co/100x150?text=Buku+1" data-template-id="cat-book-1-image" class="canva-image h-32 w-24 rounded-xl object-cover" loading="lazy">
-        <div class="min-w-0 flex-1">
-         <span data-template-id="cat-book-1-category" class="book-cat inline-block rounded-full bg-blue-50 px-2.5 py-1 text-xs font-bold text-[#0D47A1]"></span>
-         <h3 data-template-id="cat-book-1-title" class="book-title mt-2 line-clamp-2 text-lg font-extrabold text-slate-900"></h3>
-         <p data-template-id="cat-book-1-author" class="book-author mt-1 text-sm text-slate-600"></p>
-         <p data-template-id="cat-book-1-shelf" class="book-shelf mt-2 text-sm font-semibold text-slate-500"></p>
-         <div class="mt-3 flex items-center justify-between gap-2">
-          <span data-template-id="cat-book-1-status" class="book-status rounded-full bg-emerald-100 text-emerald-800 px-2.5 py-1 text-xs font-bold"></span> <button type="button" class="catalog-detail text-sm font-bold text-[#0D47A1]" data-isbn="978-602-1234-01-2">Detail</button>
-         </div>
-        </div>
-       </div>
-      </article><!-- Buku 2 -->
-      <article data-template-id="cat-book-2-card" class="catalog-card card-surface overflow-hidden rounded-2xl">
-       <div class="flex gap-4 p-4">
-        <img src="https://placehold.co/100x150?text=Buku+2" data-template-id="cat-book-2-image" class="canva-image h-32 w-24 rounded-xl object-cover" loading="lazy">
-        <div class="min-w-0 flex-1">
-         <span data-template-id="cat-book-2-category" class="book-cat inline-block rounded-full bg-blue-50 px-2.5 py-1 text-xs font-bold text-[#0D47A1]"></span>
-         <h3 data-template-id="cat-book-2-title" class="book-title mt-2 line-clamp-2 text-lg font-extrabold text-slate-900"></h3>
-         <p data-template-id="cat-book-2-author" class="book-author mt-1 text-sm text-slate-600"></p>
-         <p data-template-id="cat-book-2-shelf" class="book-shelf mt-2 text-sm font-semibold text-slate-500"></p>
-         <div class="mt-3 flex items-center justify-between gap-2">
-          <span data-template-id="cat-book-2-status" class="book-status rounded-full bg-emerald-100 text-emerald-800 px-2.5 py-1 text-xs font-bold"></span> <button type="button" class="catalog-detail text-sm font-bold text-[#0D47A1]" data-isbn="978-602-1234-02-9">Detail</button>
-         </div>
-        </div>
-       </div>
-      </article><!-- Buku 3 -->
-      <article data-template-id="cat-book-3-card" class="catalog-card card-surface overflow-hidden rounded-2xl">
-       <div class="flex gap-4 p-4">
-        <img src="https://placehold.co/100x150?text=Buku+3" data-template-id="cat-book-3-image" class="canva-image h-32 w-24 rounded-xl object-cover" loading="lazy">
-        <div class="min-w-0 flex-1">
-         <span data-template-id="cat-book-3-category" class="book-cat inline-block rounded-full bg-blue-50 px-2.5 py-1 text-xs font-bold text-[#0D47A1]"></span>
-         <h3 data-template-id="cat-book-3-title" class="book-title mt-2 line-clamp-2 text-lg font-extrabold text-slate-900"></h3>
-         <p data-template-id="cat-book-3-author" class="book-author mt-1 text-sm text-slate-600"></p>
-         <p data-template-id="cat-book-3-shelf" class="book-shelf mt-2 text-sm font-semibold text-slate-500"></p>
-         <div class="mt-3 flex items-center justify-between gap-2">
-          <span data-template-id="cat-book-3-status" class="book-status rounded-full bg-amber-100 text-amber-800 px-2.5 py-1 text-xs font-bold"></span> <button type="button" class="catalog-detail text-sm font-bold text-[#0D47A1]" data-isbn="978-602-1234-03-6">Detail</button>
-         </div>
-        </div>
-       </div>
-      </article><!-- Buku 4 -->
-      <article data-template-id="cat-book-4-card" class="catalog-card card-surface overflow-hidden rounded-2xl">
-       <div class="flex gap-4 p-4">
-        <img src="https://placehold.co/100x150?text=Buku+4" data-template-id="cat-book-4-image" class="canva-image h-32 w-24 rounded-xl object-cover" loading="lazy">
-        <div class="min-w-0 flex-1">
-         <span data-template-id="cat-book-4-category" class="book-cat inline-block rounded-full bg-blue-50 px-2.5 py-1 text-xs font-bold text-[#0D47A1]"></span>
-         <h3 data-template-id="cat-book-4-title" class="book-title mt-2 line-clamp-2 text-lg font-extrabold text-slate-900"></h3>
-         <p data-template-id="cat-book-4-author" class="book-author mt-1 text-sm text-slate-600"></p>
-         <p data-template-id="cat-book-4-shelf" class="book-shelf mt-2 text-sm font-semibold text-slate-500"></p>
-         <div class="mt-3 flex items-center justify-between gap-2">
-          <span data-template-id="cat-book-4-status" class="book-status rounded-full bg-emerald-100 text-emerald-800 px-2.5 py-1 text-xs font-bold"></span> <button type="button" class="catalog-detail text-sm font-bold text-[#0D47A1]" data-isbn="978-602-1234-04-3">Detail</button>
-         </div>
-        </div>
-       </div>
-      </article><!-- Buku 5 -->
-      <article data-template-id="cat-book-5-card" class="catalog-card card-surface overflow-hidden rounded-2xl">
-       <div class="flex gap-4 p-4">
-        <img src="https://placehold.co/100x150?text=Buku+5" data-template-id="cat-book-5-image" class="canva-image h-32 w-24 rounded-xl object-cover" loading="lazy">
-        <div class="min-w-0 flex-1">
-         <span data-template-id="cat-book-5-category" class="book-cat inline-block rounded-full bg-blue-50 px-2.5 py-1 text-xs font-bold text-[#0D47A1]"></span>
-         <h3 data-template-id="cat-book-5-title" class="book-title mt-2 line-clamp-2 text-lg font-extrabold text-slate-900"></h3>
-         <p data-template-id="cat-book-5-author" class="book-author mt-1 text-sm text-slate-600"></p>
-         <p data-template-id="cat-book-5-shelf" class="book-shelf mt-2 text-sm font-semibold text-slate-500"></p>
-         <div class="mt-3 flex items-center justify-between gap-2">
-          <span data-template-id="cat-book-5-status" class="book-status rounded-full bg-emerald-100 text-emerald-800 px-2.5 py-1 text-xs font-bold"></span> <button type="button" class="catalog-detail text-sm font-bold text-[#0D47A1]" data-isbn="978-602-1234-05-0">Detail</button>
-         </div>
-        </div>
-       </div>
-      </article><!-- Buku 6 -->
-      <article data-template-id="cat-book-6-card" class="catalog-card card-surface overflow-hidden rounded-2xl">
-       <div class="flex gap-4 p-4">
-        <img src="https://placehold.co/100x150?text=Buku+6" data-template-id="cat-book-6-image" class="canva-image h-32 w-24 rounded-xl object-cover" loading="lazy">
-        <div class="min-w-0 flex-1">
-         <span data-template-id="cat-book-6-category" class="book-cat inline-block rounded-full bg-blue-50 px-2.5 py-1 text-xs font-bold text-[#0D47A1]"></span>
-         <h3 data-template-id="cat-book-6-title" class="book-title mt-2 line-clamp-2 text-lg font-extrabold text-slate-900"></h3>
-         <p data-template-id="cat-book-6-author" class="book-author mt-1 text-sm text-slate-600"></p>
-         <p data-template-id="cat-book-6-shelf" class="book-shelf mt-2 text-sm font-semibold text-slate-500"></p>
-         <div class="mt-3 flex items-center justify-between gap-2">
-          <span data-template-id="cat-book-6-status" class="book-status rounded-full bg-amber-100 text-amber-800 px-2.5 py-1 text-xs font-bold"></span> <button type="button" class="catalog-detail text-sm font-bold text-[#0D47A1]" data-isbn="978-602-1234-06-7">Detail</button>
-         </div>
-        </div>
-       </div>
-      </article>
-     </div>
-    </div>
-   </section>
-   <section id="literasi" class="bg-[#eaf4ff] py-16">
-    <div class="section-shell">
-     <div class="flex flex-wrap items-end justify-between gap-5">
-      <div>
-       <div class="gold-line mb-4"></div>
-       <p data-template-id="new-books-kicker" class="canva-text text-sm font-extrabold uppercase tracking-[.18em] text-[#0D47A1]"></p>
-       <h2 data-template-id="new-books-title" class="canva-text heading-font mt-2 text-3xl font-bold text-slate-900 sm:text-4xl"></h2>
-      </div><a href="#katalog" class="inline-flex items-center gap-2 font-bold text-[#0D47A1] hover:underline">Lihat katalog <i data-lucide="arrow-right" class="h-4 w-4"></i></a>
-     </div>
-     <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-      <article data-template-id="new-book-1-card" class="canva-card card-surface overflow-hidden rounded-2xl">
-       <img src="https://placehold.co/300x400?text=Baru+1" data-template-id="new-book-1-image" loading="lazy" class="canva-image book-cover w-full">
-       <div class="p-5">
-        <p data-template-id="new-book-1-category" class="canva-tag mb-2 inline-block rounded-full px-3 py-1 text-xs font-bold"></p>
-        <h3 data-template-id="new-book-1-title" class="canva-text text-lg font-extrabold text-slate-900"></h3>
-        <p data-template-id="new-book-1-author" class="canva-text mt-1 text-sm text-slate-600"></p>
-        <p data-template-id="new-book-1-year" class="canva-text mt-2 text-sm font-semibold text-slate-500"></p><button class="detail-button mt-4 inline-flex items-center gap-2 text-sm font-bold text-[#0D47A1]" data-book="0" type="button">Detail <i data-lucide="arrow-up-right" class="h-4 w-4"></i></button>
-       </div>
-      </article>
-      <article data-template-id="new-book-2-card" class="canva-card card-surface overflow-hidden rounded-2xl">
-       <img src="https://placehold.co/300x400?text=Baru+2" data-template-id="new-book-2-image" loading="lazy" class="canva-image book-cover w-full">
-       <div class="p-5">
-        <p data-template-id="new-book-2-category" class="canva-tag mb-2 inline-block rounded-full px-3 py-1 text-xs font-bold"></p>
-        <h3 data-template-id="new-book-2-title" class="canva-text text-lg font-extrabold text-slate-900"></h3>
-        <p data-template-id="new-book-2-author" class="canva-text mt-1 text-sm text-slate-600"></p>
-        <p data-template-id="new-book-2-year" class="canva-text mt-2 text-sm font-semibold text-slate-500"></p><button class="detail-button mt-4 inline-flex items-center gap-2 text-sm font-bold text-[#0D47A1]" data-book="1" type="button">Detail <i data-lucide="arrow-up-right" class="h-4 w-4"></i></button>
-       </div>
-      </article>
-      <article data-template-id="new-book-3-card" class="canva-card card-surface overflow-hidden rounded-2xl">
-       <img src="https://placehold.co/300x400?text=Baru+3" data-template-id="new-book-3-image" loading="lazy" class="canva-image book-cover w-full">
-       <div class="p-5">
-        <p data-template-id="new-book-3-category" class="canva-tag mb-2 inline-block rounded-full px-3 py-1 text-xs font-bold"></p>
-        <h3 data-template-id="new-book-3-title" class="canva-text text-lg font-extrabold text-slate-900"></h3>
-        <p data-template-id="new-book-3-author" class="canva-text mt-1 text-sm text-slate-600"></p>
-        <p data-template-id="new-book-3-year" class="canva-text mt-2 text-sm font-semibold text-slate-500"></p><button class="detail-button mt-4 inline-flex items-center gap-2 text-sm font-bold text-[#0D47A1]" data-book="2" type="button">Detail <i data-lucide="arrow-up-right" class="h-4 w-4"></i></button>
-       </div>
-      </article>
-      <article data-template-id="new-book-4-card" class="canva-card card-surface overflow-hidden rounded-2xl">
-       <img src="https://placehold.co/300x400?text=Baru+4" data-template-id="new-book-4-image" loading="lazy" class="canva-image book-cover w-full">
-       <div class="p-5">
-        <p data-template-id="new-book-4-category" class="canva-tag mb-2 inline-block rounded-full px-3 py-1 text-xs font-bold"></p>
-        <h3 data-template-id="new-book-4-title" class="canva-text text-lg font-extrabold text-slate-900"></h3>
-        <p data-template-id="new-book-4-author" class="canva-text mt-1 text-sm text-slate-600"></p>
-        <p data-template-id="new-book-4-year" class="canva-text mt-2 text-sm font-semibold text-slate-500"></p><button class="detail-button mt-4 inline-flex items-center gap-2 text-sm font-bold text-[#0D47A1]" data-book="3" type="button">Detail <i data-lucide="arrow-up-right" class="h-4 w-4"></i></button>
-       </div>
-      </article>
-     </div>
-    </div>
-   </section>
-   <section class="py-16">
-    <div class="section-shell grid gap-10 lg:grid-cols-[.9fr_1.1fr]">
-     <div>
-      <div class="gold-line mb-4"></div>
-      <p data-template-id="popular-kicker" class="canva-text text-sm font-extrabold uppercase tracking-[.18em] text-[#0D47A1]"></p>
-      <h2 data-template-id="popular-title" class="canva-text heading-font mt-2 text-3xl font-bold text-slate-900 sm:text-4xl"></h2>
-      <p data-template-id="popular-description" class="canva-text mt-4 leading-7 text-slate-600"></p>
-     </div>
-     <ol class="card-surface overflow-hidden rounded-2xl">
-      <li class="flex items-center gap-4 border-b border-slate-100 p-4"><span class="heading-font text-3xl font-bold text-[#F6B800]">01</span>
-       <div class="min-w-0 flex-1">
-        <p class="font-extrabold text-slate-900">Dasar-Dasar Pemrograman Web</p>
-        <p class="text-sm text-slate-500">312 kali dipinjam</p>
-       </div><i data-lucide="trending-up" class="h-5 w-5 text-[#0D47A1]"></i></li>
-      <li class="flex items-center gap-4 border-b border-slate-100 p-4"><span class="heading-font text-3xl font-bold text-[#F6B800]">02</span>
-       <div class="min-w-0 flex-1">
-        <p class="font-extrabold text-slate-900">Fisika untuk SMK</p>
-        <p class="text-sm text-slate-500">276 kali dipinjam</p>
-       </div><i data-lucide="trending-up" class="h-5 w-5 text-[#0D47A1]"></i></li>
-      <li class="flex items-center gap-4 border-b border-slate-100 p-4"><span class="heading-font text-3xl font-bold text-[#F6B800]">03</span>
-       <div class="min-w-0 flex-1">
-        <p class="font-extrabold text-slate-900">Laskar Pelangi</p>
-        <p class="text-sm text-slate-500">251 kali dipinjam</p>
-       </div><i data-lucide="trending-up" class="h-5 w-5 text-[#0D47A1]"></i></li>
-      <li class="flex items-center gap-4 p-4"><span class="heading-font text-3xl font-bold text-[#F6B800]">04</span>
-       <div class="min-w-0 flex-1">
-        <p class="font-extrabold text-slate-900">Kewirausahaan Kreatif</p>
-        <p class="text-sm text-slate-500">229 kali dipinjam</p>
-       </div><i data-lucide="trending-up" class="h-5 w-5 text-[#0D47A1]"></i></li>
-     </ol>
-    </div>
-   </section>
-   <section id="ebook" class="bg-[#0b2e68] py-16 text-white">
-    <div class="section-shell">
-     <div class="flex flex-wrap items-end justify-between gap-5">
-      <div class="max-w-2xl">
-       <p data-template-id="ebook-kicker" class="canva-text text-sm font-extrabold uppercase tracking-[.18em] text-[#F6B800]"></p>
-       <h2 data-template-id="ebook-title" class="canva-text heading-font mt-2 text-3xl font-bold sm:text-4xl"></h2>
-       <p data-template-id="ebook-description" class="canva-text mt-3 leading-7 text-blue-100"></p>
-      </div>
-     </div>
-     <div class="mt-8 grid gap-5 md:grid-cols-3">
-      <article data-template-id="ebook-1-card" class="canva-card overflow-hidden rounded-2xl bg-white text-slate-900 shadow-xl"><img src="https://placehold.co/400x300?text=Ebook+1" data-template-id="ebook-1-image" loading="lazy" class="canva-image h-52 w-full object-cover">
-       <div class="p-5">
-        <p data-template-id="ebook-1-category" class="canva-tag text-sm font-bold text-[#0D47A1]"></p>
-        <h3 data-template-id="ebook-1-title" class="canva-text mt-2 text-xl font-extrabold"></h3><button class="read-ebook mt-5 inline-flex items-center gap-2 rounded-xl bg-[#0D47A1] px-4 py-2.5 font-bold text-white" data-ebook="Panduan Literasi Digital" type="button"><i data-lucide="book-open" class="h-4 w-4"></i> Baca</button>
-       </div>
-      </article>
-      <article data-template-id="ebook-2-card" class="canva-card overflow-hidden rounded-2xl bg-white text-slate-900 shadow-xl"><img src="https://placehold.co/400x300?text=Ebook+2" data-template-id="ebook-2-image" loading="lazy" class="canva-image h-52 w-full object-cover">
-       <div class="p-5">
-        <p data-template-id="ebook-2-category" class="canva-tag text-sm font-bold text-[#0D47A1]"></p>
-        <h3 data-template-id="ebook-2-title" class="canva-text mt-2 text-xl font-extrabold"></h3><button class="read-ebook mt-5 inline-flex items-center gap-2 rounded-xl bg-[#0D47A1] px-4 py-2.5 font-bold text-white" data-ebook="Membaca Efektif untuk Pelajar" type="button"><i data-lucide="book-open" class="h-4 w-4"></i> Baca</button>
-       </div>
-      </article>
-      <article data-template-id="ebook-3-card" class="canva-card overflow-hidden rounded-2xl bg-white text-slate-900 shadow-xl"><img src="https://placehold.co/400x300?text=Ebook+3" data-template-id="ebook-3-image" loading="lazy" class="canva-image h-52 w-full object-cover">
-       <div class="p-5">
-        <p data-template-id="ebook-3-category" class="canva-tag text-sm font-bold text-[#0D47A1]"></p>
-        <h3 data-template-id="ebook-3-title" class="canva-text mt-2 text-xl font-extrabold"></h3><button class="read-ebook mt-5 inline-flex items-center gap-2 rounded-xl bg-[#0D47A1] px-4 py-2.5 font-bold text-white" data-ebook="Eksplorasi Dunia Sains" type="button"><i data-lucide="book-open" class="h-4 w-4"></i> Baca</button>
-       </div>
-      </article>
-     </div>
-    </div>
-   </section>
-   <section id="profil" class="py-16">
-    <div class="section-shell grid items-center gap-10 lg:grid-cols-2">
-     <div class="relative"><img src="https://placehold.co/800x600?text=Profil" data-template-id="profile-image" loading="lazy" class="canva-image h-[420px] w-full rounded-3xl object-cover shadow-2xl">
-      <div data-template-id="hours-card" class="canva-card absolute -bottom-6 left-5 right-5 rounded-2xl p-5 shadow-xl sm:left-auto sm:right-6 sm:w-72">
-       <p data-template-id="hours-title" class="canva-text font-extrabold"></p>
-       <p data-template-id="hours-text" class="canva-text mt-2 text-sm leading-6"></p>
-      </div>
-     </div>
-     <div>
-      <div class="gold-line mb-4"></div>
-      <p data-template-id="profile-kicker" class="canva-text text-sm font-extrabold uppercase tracking-[.18em] text-[#0D47A1]"></p>
-      <h2 data-template-id="profile-title" class="canva-text heading-font mt-2 text-3xl font-bold text-slate-900 sm:text-4xl"></h2>
-      <p data-template-id="profile-history" class="canva-text mt-5 leading-7 text-slate-600"></p>
-      <div class="mt-6 grid gap-4 sm:grid-cols-2">
-       <div class="rounded-2xl border border-blue-100 bg-blue-50 p-4">
-        <h3 data-template-id="vision-title" class="canva-text font-extrabold text-[#0D47A1]"></h3>
-        <p data-template-id="vision-text" class="canva-text mt-2 text-sm leading-6 text-slate-600"></p>
-       </div>
-       <div class="rounded-2xl border border-amber-100 bg-amber-50 p-4">
-        <h3 data-template-id="mission-title" class="canva-text font-extrabold text-amber-800"></h3>
-        <p data-template-id="mission-text" class="canva-text mt-2 text-sm leading-6 text-slate-600"></p>
-       </div>
-      </div>
-     </div>
-    </div>
-   </section>
-   <section id="berita" class="bg-[#eaf4ff] py-16">
-    <div class="section-shell">
-     <div class="mb-8">
-      <div class="gold-line mb-4"></div>
-      <p data-template-id="news-kicker" class="canva-text text-sm font-extrabold uppercase tracking-[.18em] text-[#0D47A1]"></p>
-      <h2 data-template-id="news-title" class="canva-text heading-font mt-2 text-3xl font-bold text-slate-900 sm:text-4xl"></h2>
-     </div>
-     <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-      <article data-template-id="news-1-card" class="canva-card card-surface rounded-2xl p-5">
-       <div class="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-blue-100 text-[#0D47A1]"><i data-lucide="trophy"></i>
-       </div>
-       <p data-template-id="news-1-date" class="canva-text text-xs font-bold text-slate-500"></p>
-       <h3 data-template-id="news-1-title" class="canva-text mt-2 font-extrabold text-slate-900"></h3>
-       <p data-template-id="news-1-text" class="canva-text mt-2 text-sm leading-6 text-slate-600"></p>
-      </article>
-      <article data-template-id="news-2-card" class="canva-card card-surface rounded-2xl p-5">
-       <div class="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-amber-100 text-amber-700"><i data-lucide="book-plus"></i>
-       </div>
-       <p data-template-id="news-2-date" class="canva-text text-xs font-bold text-slate-500"></p>
-       <h3 data-template-id="news-2-title" class="canva-text mt-2 font-extrabold text-slate-900"></h3>
-       <p data-template-id="news-2-text" class="canva-text mt-2 text-sm leading-6 text-slate-600"></p>
-      </article>
-      <article data-template-id="news-3-card" class="canva-card card-surface rounded-2xl p-5">
-       <div class="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-cyan-100 text-cyan-700"><i data-lucide="users"></i>
-       </div>
-       <p data-template-id="news-3-date" class="canva-text text-xs font-bold text-slate-500"></p>
-       <h3 data-template-id="news-3-title" class="canva-text mt-2 font-extrabold text-slate-900"></h3>
-       <p data-template-id="news-3-text" class="canva-text mt-2 text-sm leading-6 text-slate-600"></p>
-      </article>
-      <article data-template-id="news-4-card" class="canva-card card-surface rounded-2xl p-5">
-       <div class="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-100 text-emerald-700"><i data-lucide="pen-line"></i>
-       </div>
-       <p data-template-id="news-4-date" class="canva-text text-xs font-bold text-slate-500"></p>
-       <h3 data-template-id="news-4-title" class="canva-text mt-2 font-extrabold text-slate-900"></h3>
-       <p data-template-id="news-4-text" class="canva-text mt-2 text-sm leading-6 text-slate-600"></p>
-      </article>
-     </div>
-    </div>
-   </section>
-   <section class="py-16">
-    <div class="section-shell grid gap-10 lg:grid-cols-2">
-     <div>
-      <div class="gold-line mb-4"></div>
-      <p data-template-id="agenda-kicker" class="canva-text text-sm font-extrabold uppercase tracking-[.18em] text-[#0D47A1]"></p>
-      <h2 data-template-id="agenda-title" class="canva-text heading-font mt-2 text-3xl font-bold text-slate-900 sm:text-4xl"></h2>
-      <div class="mt-7 space-y-4">
-       <div class="card-surface flex items-center gap-4 rounded-2xl p-4">
-        <div class="rounded-xl bg-[#0D47A1] px-3 py-2 text-center text-white"><b class="block text-xl">24</b><span class="text-xs">JUL</span>
-        </div>
-        <div>
-         <h3 class="font-extrabold text-slate-900">Bedah Buku Inspiratif</h3>
-         <p class="text-sm text-slate-500">Aula Perpustakaan • 10.00 WIB</p>
-        </div>
-       </div>
-       <div class="card-surface flex items-center gap-4 rounded-2xl p-4">
-        <div class="rounded-xl bg-[#F6B800] px-3 py-2 text-center text-[#082f6b]"><b class="block text-xl">30</b><span class="text-xs">JUL</span>
-        </div>
-        <div>
-         <h3 class="font-extrabold text-slate-900">Lomba Resensi Buku</h3>
-         <p class="text-sm text-slate-500">Ruang Multimedia • 09.00 WIB</p>
-        </div>
-       </div>
-       <div class="card-surface flex items-center gap-4 rounded-2xl p-4">
-        <div class="rounded-xl bg-cyan-600 px-3 py-2 text-center text-white"><b class="block text-xl">05</b><span class="text-xs">AGU</span>
-        </div>
-        <div>
-         <h3 class="font-extrabold text-slate-900">Pekan Literasi Sekolah</h3>
-         <p class="text-sm text-slate-500">Area Sekolah • 07.30 WIB</p>
-        </div>
-       </div>
-      </div>
-     </div>
-     <div class="rounded-3xl bg-[#0D47A1] p-7 text-white shadow-xl">
-      <i data-lucide="video" class="h-9 w-9 text-[#F6B800]"></i>
-      <p data-template-id="video-kicker" class="canva-text mt-8 text-sm font-bold uppercase tracking-[.18em] text-blue-200"></p>
-      <h2 data-template-id="video-title" class="canva-text heading-font mt-2 text-3xl font-bold"></h2>
-      <p data-template-id="video-description" class="canva-text mt-4 leading-7 text-blue-100"></p><button id="video-button" data-template-id="video-button" type="button" class="canva-button mt-7 inline-flex items-center gap-2 rounded-xl px-5 py-3 font-bold transition hover:brightness-95"><i data-lucide="play" class="h-5 w-5"></i></button>
-     </div>
-    </div>
-   </section>
-   <section class="bg-[#081f45] py-16 text-white">
-    <div class="section-shell">
-     <div class="mb-8">
-      <p data-template-id="gallery-kicker" class="canva-text text-sm font-extrabold uppercase tracking-[.18em] text-[#F6B800]"></p>
-      <h2 data-template-id="gallery-title" class="canva-text heading-font mt-2 text-3xl font-bold sm:text-4xl"></h2>
-     </div>
-     <div class="relative overflow-hidden rounded-3xl">
-      <div class="gallery-slide active"><img src="https://placehold.co/800x400?text=Galeri+1" data-template-id="gallery-image-1" loading="lazy" class="canva-image h-[430px] w-full object-cover">
-       <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/75 to-transparent p-8">
-        <p data-template-id="gallery-caption-1" class="canva-text text-2xl font-extrabold"></p>
-       </div>
-      </div>
-      <div class="gallery-slide"><img src="https://placehold.co/800x400?text=Galeri+2" data-template-id="gallery-image-2" loading="lazy" class="canva-image h-[430px] w-full object-cover">
-       <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/75 to-transparent p-8">
-        <p data-template-id="gallery-caption-2" class="canva-text text-2xl font-extrabold"></p>
-       </div>
-      </div>
-      <div class="gallery-slide"><img src="https://placehold.co/800x400?text=Galeri+3" data-template-id="gallery-image-3" loading="lazy" class="canva-image h-[430px] w-full object-cover">
-       <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/75 to-transparent p-8">
-        <p data-template-id="gallery-caption-3" class="canva-text text-2xl font-extrabold"></p>
-       </div>
-      </div>
-      <div class="gallery-slide"><img src="https://placehold.co/800x400?text=Galeri+4" data-template-id="gallery-image-4" loading="lazy" class="canva-image h-[430px] w-full object-cover">
-       <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/75 to-transparent p-8">
-        <p data-template-id="gallery-caption-4" class="canva-text text-2xl font-extrabold"></p>
-       </div>
-      </div>
-      <div class="absolute bottom-5 right-5 flex gap-2"><button id="gallery-prev" type="button" class="rounded-xl bg-white/90 p-3 text-[#0D47A1]" aria-label="Foto sebelumnya"><i data-lucide="chevron-left"></i></button><button id="gallery-next" type="button" class="rounded-xl bg-white/90 p-3 text-[#0D47A1]" aria-label="Foto berikutnya"><i data-lucide="chevron-right"></i></button>
-      </div>
-     </div>
-    </div>
-   </section>
-   <section class="py-16">
-    <div class="section-shell max-w-4xl">
-     <div class="text-center">
-      <div class="gold-line mx-auto mb-4"></div>
-      <p data-template-id="testimonial-kicker" class="canva-text text-sm font-extrabold uppercase tracking-[.18em] text-[#0D47A1]"></p>
-      <h2 data-template-id="testimonial-title" class="canva-text heading-font mt-2 text-3xl font-bold text-slate-900 sm:text-4xl"></h2>
-     </div>
-     <div class="card-surface mt-8 rounded-3xl p-7 text-center sm:p-10">
-      <div class="testimonial active"><img src="https://placehold.co/100x100?text=Siswa+1" data-template-id="testimonial-image-1" loading="lazy" class="canva-image mx-auto h-20 w-20 rounded-full object-cover">
-       <p data-template-id="testimonial-quote-1" class="canva-text heading-font mt-6 text-xl leading-8 text-slate-800"></p>
-       <p data-template-id="testimonial-name-1" class="canva-text mt-5 font-extrabold text-[#0D47A1]"></p>
-       <p data-template-id="testimonial-role-1" class="canva-text mt-1 text-sm text-slate-500"></p>
-      </div>
-      <div class="testimonial"><img src="https://placehold.co/100x100?text=Siswa+2" data-template-id="testimonial-image-2" loading="lazy" class="canva-image mx-auto h-20 w-20 rounded-full object-cover">
-       <p data-template-id="testimonial-quote-2" class="canva-text heading-font mt-6 text-xl leading-8 text-slate-800"></p>
-       <p data-template-id="testimonial-name-2" class="canva-text mt-5 font-extrabold text-[#0D47A1]"></p>
-       <p data-template-id="testimonial-role-2" class="canva-text mt-1 text-sm text-slate-500"></p>
-      </div>
-      <div class="testimonial"><img src="https://placehold.co/100x100?text=Siswa+3" data-template-id="testimonial-image-3" loading="lazy" class="canva-image mx-auto h-20 w-20 rounded-full object-cover">
-       <p data-template-id="testimonial-quote-3" class="canva-text heading-font mt-6 text-xl leading-8 text-slate-800"></p>
-       <p data-template-id="testimonial-name-3" class="canva-text mt-5 font-extrabold text-[#0D47A1]"></p>
-       <p data-template-id="testimonial-role-3" class="canva-text mt-1 text-sm text-slate-500"></p>
-      </div>
-      <div class="mt-7 flex justify-center gap-2"><button class="testimonial-dot h-3 w-3 rounded-full bg-[#0D47A1]" type="button" aria-label="Testimoni 1"></button><button class="testimonial-dot h-3 w-3 rounded-full bg-slate-300" type="button" aria-label="Testimoni 2"></button><button class="testimonial-dot h-3 w-3 rounded-full bg-slate-300" type="button" aria-label="Testimoni 3"></button>
-      </div>
-     </div>
-    </div>
-   </section>
-   <section id="pengumuman" class="bg-[#eaf4ff] py-16">
-    <div class="section-shell grid gap-8 lg:grid-cols-2">
-     <div>
-      <div class="gold-line mb-4"></div>
-      <p data-template-id="announcement-kicker" class="canva-text text-sm font-extrabold uppercase tracking-[.18em] text-[#0D47A1]"></p>
-      <h2 data-template-id="announcement-title" class="canva-text heading-font mt-2 text-3xl font-bold text-slate-900 sm:text-4xl"></h2>
-      <p data-template-id="announcement-description" class="canva-text mt-4 leading-7 text-slate-600"></p>
-     </div>
-     <div class="space-y-3">
-      <div data-template-id="announcement-1" class="canva-banner flex gap-4 rounded-2xl p-4"><i data-lucide="megaphone" class="h-6 w-6 shrink-0"></i>
-       <p class="font-semibold">Perpustakaan tutup pada hari libur nasional dan kegiatan sekolah tertentu.</p>
-      </div>
-      <div data-template-id="announcement-2" class="canva-banner flex gap-4 rounded-2xl p-4"><i data-lucide="bell-ring" class="h-6 w-6 shrink-0"></i>
-       <p class="font-semibold">Koleksi buku teknologi dan kewirausahaan terbaru telah tersedia.</p>
-      </div>
-      <div data-template-id="announcement-3" class="canva-banner flex gap-4 rounded-2xl p-4"><i data-lucide="award" class="h-6 w-6 shrink-0"></i>
-       <p class="font-semibold">Pendaftaran Lomba Resensi Buku dibuka hingga 28 Juli.</p>
-      </div>
-     </div>
-    </div>
-   </section>
-   <section id="faq" class="py-16">
-    <div class="section-shell max-w-4xl">
-     <div class="text-center">
-      <div class="gold-line mx-auto mb-4"></div>
-      <p data-template-id="faq-kicker" class="canva-text text-sm font-extrabold uppercase tracking-[.18em] text-[#0D47A1]"></p>
-      <h2 data-template-id="faq-title" class="canva-text heading-font mt-2 text-3xl font-bold text-slate-900 sm:text-4xl"></h2>
-     </div>
-     <div class="mt-8 space-y-3">
-      <article class="faq-item card-surface rounded-2xl"><button type="button" class="flex w-full items-center justify-between gap-4 p-5 text-left font-extrabold text-slate-900"><span data-template-id="faq-q1" class="canva-text"></span><i class="faq-plus h-5 w-5 shrink-0 text-[#0D47A1]" data-lucide="plus"></i></button>
-       <div class="faq-answer px-5 pb-5">
-        <p data-template-id="faq-a1" class="canva-text leading-7 text-slate-600"></p>
-       </div>
-      </article>
-      <article class="faq-item card-surface rounded-2xl"><button type="button" class="flex w-full items-center justify-between gap-4 p-5 text-left font-extrabold text-slate-900"><span data-template-id="faq-q2" class="canva-text"></span><i class="faq-plus h-5 w-5 shrink-0 text-[#0D47A1]" data-lucide="plus"></i></button>
-       <div class="faq-answer px-5 pb-5">
-        <p data-template-id="faq-a2" class="canva-text leading-7 text-slate-600"></p>
-       </div>
-      </article>
-      <article class="faq-item card-surface rounded-2xl"><button type="button" class="flex w-full items-center justify-between gap-4 p-5 text-left font-extrabold text-slate-900"><span data-template-id="faq-q3" class="canva-text"></span><i class="faq-plus h-5 w-5 shrink-0 text-[#0D47A1]" data-lucide="plus"></i></button>
-       <div class="faq-answer px-5 pb-5">
-        <p data-template-id="faq-a3" class="canva-text leading-7 text-slate-600"></p>
-       </div>
-      </article>
-     </div>
-    </div>
-   </section>
-   <section id="kontak" class="bg-[#0D47A1] py-16 text-white">
-    <div class="section-shell grid gap-10 lg:grid-cols-[1.1fr_.9fr]">
-     <div>
-      <p data-template-id="contact-kicker" class="canva-text text-sm font-extrabold uppercase tracking-[.18em] text-[#F6B800]"></p>
-      <h2 data-template-id="contact-title" class="canva-text heading-font mt-2 text-3xl font-bold sm:text-4xl"></h2>
-      <p data-template-id="contact-description" class="canva-text mt-4 max-w-xl leading-7 text-blue-100"></p>
-      <div class="mt-8 grid gap-4 sm:grid-cols-2">
-       <div class="flex gap-3"><i data-lucide="map-pin" class="h-5 w-5 shrink-0 text-[#F6B800]"></i>
-        <p data-template-id="contact-address" class="canva-text text-sm leading-6"></p>
-       </div>
-       <div class="flex gap-3"><i data-lucide="phone" class="h-5 w-5 shrink-0 text-[#F6B800]"></i>
-        <p data-template-id="contact-phone" class="canva-text text-sm leading-6"></p>
-       </div>
-       <div class="flex gap-3"><i data-lucide="mail" class="h-5 w-5 shrink-0 text-[#F6B800]"></i>
-        <p data-template-id="contact-email" class="canva-text text-sm leading-6"></p>
-       </div>
-       <div class="flex gap-3"><i data-lucide="clock-3" class="h-5 w-5 shrink-0 text-[#F6B800]"></i>
-        <p data-template-id="contact-hours" class="canva-text text-sm leading-6"></p>
-       </div>
-      </div>
-     </div>
-     <div class="rounded-3xl bg-white/10 p-7 backdrop-blur"><i data-lucide="map" class="h-8 w-8 text-[#F6B800]"></i>
-      <h3 data-template-id="map-title" class="canva-text mt-5 text-xl font-extrabold"></h3>
-      <p data-template-id="map-text" class="canva-text mt-3 leading-7 text-blue-100"></p><a data-template-id="map-button" class="canva-button mt-6 inline-flex items-center gap-2 rounded-xl px-5 py-3 font-bold" href="https://maps.google.com" target="_blank" rel="noopener noreferrer"><i data-lucide="external-link" class="h-4 w-4"></i></a>
-     </div>
-    </div>
-   </section>
-  </main>
-  <footer class="bg-[#071b3b] py-10 text-blue-100">
-   <div class="section-shell grid gap-8 md:grid-cols-3">
-    <div>
-     <div class="flex items-center gap-3">
-      <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-white overflow-hidden"><img src="https://placehold.co/100x100?text=Logo" data-template-id="footer-logo" class="canva-image h-full w-full object-contain" loading="lazy">
-      </div>
-      <p data-template-id="footer-brand" class="canva-text font-extrabold text-white"></p>
-     </div>
-     <p data-template-id="footer-text" class="canva-text mt-4 max-w-sm text-sm leading-6"></p>
-    </div>
-    <div>
-     <h2 data-template-id="footer-links-title" class="canva-text font-extrabold text-white"></h2>
-     <div class="mt-4 grid grid-cols-2 gap-3 text-sm"><a href="#katalog">Katalog Buku</a><a href="#ebook">E-Library</a><a href="#profil">Profil</a><a href="#berita">Berita</a><a href="#faq">FAQ</a><a href="#kontak">Kontak</a>
-     </div>
-    </div>
-    <div>
-     <h2 data-template-id="footer-hours-title" class="canva-text font-extrabold text-white"></h2>
-     <p data-template-id="footer-hours-text" class="canva-text mt-4 text-sm leading-6"></p>
-    </div>
-   </div>
-   <div class="section-shell mt-8 border-t border-white/10 pt-6 text-xs text-blue-200">
-    <p data-template-id="copyright" class="canva-text"></p>
-   </div>
-  </footer>
-  <div id="book-modal" class="modal fixed inset-0 z-50 items-center justify-center bg-slate-950/60 p-4" role="dialog" aria-modal="true" aria-labelledby="modal-book-title">
-   <div class="w-full max-w-lg rounded-3xl bg-white p-6 shadow-2xl">
-    <div class="flex items-start justify-between gap-4">
-     <div>
-      <p class="text-sm font-bold uppercase tracking-widest text-[#0D47A1]">Detail koleksi</p>
-      <h2 id="modal-book-title" class="heading-font mt-2 text-2xl font-bold text-slate-900"></h2>
-     </div><button class="close-modal rounded-xl bg-slate-100 p-2 text-slate-600" type="button" aria-label="Tutup"><i data-lucide="x"></i></button>
-    </div>
-    <div class="mt-5 rounded-2xl bg-blue-50 p-5 text-slate-700">
-     <p id="modal-book-meta" class="leading-7"></p>
-     <p id="modal-book-status" class="mt-4 inline-block rounded-full bg-emerald-100 px-3 py-1 text-sm font-bold text-emerald-800"></p>
-    </div><button class="close-modal mt-6 w-full rounded-xl bg-[#0D47A1] px-4 py-3 font-bold text-white" type="button">Tutup</button>
-   </div>
-  </div>
-  <div id="info-modal" class="modal fixed inset-0 z-50 items-center justify-center bg-slate-950/60 p-4" role="dialog" aria-modal="true" aria-labelledby="info-modal-title">
-   <div class="w-full max-w-lg rounded-3xl bg-white p-6 shadow-2xl">
-    <div class="flex items-start justify-between gap-4">
-     <div class="rounded-xl bg-blue-100 p-3 text-[#0D47A1]"><i data-lucide="info"></i>
-     </div><button class="close-info rounded-xl bg-slate-100 p-2 text-slate-600" type="button" aria-label="Tutup"><i data-lucide="x"></i></button>
-    </div>
-    <h2 id="info-modal-title" class="heading-font mt-5 text-2xl font-bold text-slate-900"></h2>
-    <p id="info-modal-text" class="mt-3 leading-7 text-slate-600"></p><button class="close-info mt-6 w-full rounded-xl bg-[#0D47A1] px-4 py-3 font-bold text-white" type="button">Mengerti</button>
-   </div>
-  </div><!-- Modal Sambutan Kepala Sekolah -->
-  <div id="welcome-modal" class="modal fixed inset-0 z-50 items-center justify-center bg-slate-950/60 p-4" role="dialog" aria-modal="true" aria-labelledby="welcome-modal-title">
-   <div class="w-full max-w-md rounded-3xl bg-white p-6 shadow-2xl overflow-hidden relative"><button class="close-welcome absolute top-4 right-4 z-10 rounded-full bg-slate-100/80 p-2 text-slate-600 hover:bg-slate-200 transition" type="button" aria-label="Tutup"> <i data-lucide="x" class="h-5 w-5"></i> </button>
-    <div class="text-center">
-     <div class="mx-auto w-32 h-40 rounded-2xl overflow-hidden shadow-md mb-4 border-2 border-[#F6B800]"><img src="https://placehold.co/300x400?text=Kepala+Sekolah" data-template-id="welcome-modal-image" class="canva-image w-full h-full object-cover" loading="lazy">
-     </div>
-     <h2 id="welcome-modal-title" data-template-id="welcome-modal-title" class="canva-text heading-font text-2xl font-bold text-slate-900"></h2>
-     <p data-template-id="welcome-modal-principal-name" class="canva-text text-sm font-extrabold text-[#0D47A1] mt-1"></p>
-     <p data-template-id="welcome-modal-principal-role" class="canva-text text-xs text-slate-500 font-semibold uppercase tracking-wider"></p>
-     <div class="mt-4 bg-amber-50/50 border border-amber-100 rounded-2xl p-4 text-slate-700 italic text-sm leading-relaxed relative"><i data-lucide="quote" class="h-8 w-8 text-[#F6B800]/20 absolute -top-2 -left-1 transform -rotate-12"></i>
-      <p data-template-id="welcome-modal-text" class="canva-text relative z-10"></p>
-     </div><button class="close-welcome mt-6 w-full rounded-xl bg-[#0D47A1] hover:bg-[#082f6b] px-4 py-3 font-bold text-white shadow-lg shadow-blue-900/10 transition" type="button" data-template-id="welcome-modal-close-btn"></button>
-    </div>
-   </div>
-  </div>
-  <script src="/_sdk/b7bbbe551ba4f8f5.editing_sdk.js" integrity="sha512-h06pMz6KcVo4Wjvoggb4sS5DZpb55bTriAzBmA0YwbkBA3z2ZXl8CBEbCWT+/fAsm0SwDejJ7jJHOZsLZKqPoQ=="></script>
-  <script>
-    const books = [
-      { index: 1, title: "Dasar-Dasar Pemrograman Web", author: "R. Pratama", isbn: "978-602-1234-01-2", publisher: "Edukasi Nusantara", category: "Teknologi", shelf: "TK-01", status: "Tersedia" },
-      { index: 2, title: "Fisika untuk SMK", author: "D. Setiawan", isbn: "978-602-1234-02-9", publisher: "Cerdas Media", category: "Sains", shelf: "SN-07", status: "Tersedia" },
-      { index: 3, title: "Laskar Pelangi", author: "Andrea Hirata", isbn: "978-602-1234-03-6", publisher: "Bentang Pustaka", category: "Sastra", shelf: "SS-12", status: "Dipinjam" },
-      { index: 4, title: "Kewirausahaan Kreatif", author: "A. Ramadhan", isbn: "978-602-1234-04-3", publisher: "Inspirasi Pelajar", category: "Pengembangan Diri", shelf: "PD-04", status: "Tersedia" },
-      { index: 5, title: "Matematika Terapan", author: "Y. Wibowo", isbn: "978-602-1234-05-0", publisher: "Pustaka Ilmu", category: "Sains", shelf: "SN-09", status: "Tersedia" },
-      { index: 6, title: "Komunikasi Profesional", author: "N. Sari", isbn: "978-602-1234-06-7", publisher: "Karya Bangsa", category: "Pengembangan Diri", shelf: "PD-09", status: "Dipinjam" }
-    ];
-
-    const searchMessage = document.getElementById("search-message");
-
-    function filterCatalog() {
-      const query = document.getElementById("book-search").value.trim().toLowerCase();
-      const category = document.getElementById("category-filter").value;
-      let visibleCount = 0;
-
-      books.forEach((book) => {
-        const card = document.querySelector(`[data-template-id="cat-book-${book.index}-card"]`);
-        if (!card) return;
-        
-        const matchesText = !query || [book.title, book.author, book.isbn, book.publisher, book.category].some(value => value.toLowerCase().includes(query));
-        const matchesCategory = !category || book.category === category;
-
-        if (matchesText && matchesCategory) {
-          card.classList.remove("hidden");
-          visibleCount++;
-        } else {
-          card.classList.add("hidden");
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Library - SMKN Bojonggambir</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #3b82f6;
+            --accent: #fbbf24;
+            --bg: #f8fafc;
+            --dark: #1e293b;
         }
-      });
 
-      searchMessage.textContent = visibleCount ? `${visibleCount} koleksi ditemukan.` : "Koleksi yang Anda cari belum ditemukan. Coba kata kunci lain.";
-    }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
 
-    document.getElementById("catalog-form").addEventListener("submit", event => { event.preventDefault(); filterCatalog(); });
-    document.getElementById("book-search").addEventListener("input", filterCatalog);
-    document.getElementById("category-filter").addEventListener("change", filterCatalog);
+        body { background-color: var(--bg); color: var(--dark); line-height: 1.6; }
 
-    const bookModal = document.getElementById("book-modal");
-    function openBook(book) {
-      document.getElementById("modal-book-title").textContent = book.title;
-      document.getElementById("modal-book-meta").textContent = `${book.author} • ${book.publisher} • ISBN ${book.isbn} • Kategori ${book.category} • Rak ${book.shelf}`;
-      document.getElementById("modal-book-status").textContent = book.status;
-      bookModal.classList.add("show");
-    }
-    function openBookByIsbn(isbn) { const book = books.find(item => item.isbn === isbn); if (book) openBook(book); }
-    document.querySelectorAll(".detail-button").forEach(button => button.addEventListener("click", () => openBook(books[Number(button.dataset.book)])));
-    document.querySelectorAll(".catalog-detail").forEach(button => button.addEventListener("click", () => openBookByIsbn(button.dataset.isbn)));
-    document.querySelectorAll(".close-modal").forEach(button => button.addEventListener("click", () => bookModal.classList.remove("show")));
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(rgba(30, 58, 138, 0.9), rgba(30, 58, 138, 0.9)), 
+                        url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+        }
 
-    const infoModal = document.getElementById("info-modal");
-    const welcomeModal = document.getElementById("welcome-modal");
-    
-    // Auto show welcome modal on load
-    if (welcomeModal) {
-      setTimeout(() => {
-        welcomeModal.classList.add("show");
-      }, 800);
-    }
-    
-    function showInfo(title, message) {
-      document.getElementById("info-modal-title").textContent = title;
-      document.getElementById("info-modal-text").textContent = message;
-      infoModal.classList.add("show");
-    }
-    document.querySelectorAll(".close-info").forEach(button => button.addEventListener("click", () => infoModal.classList.remove("show")));
-    document.querySelectorAll(".close-welcome").forEach(button => button.addEventListener("click", () => welcomeModal.classList.remove("show")));
-    document.getElementById("login-button").addEventListener("click", () => showInfo("Akses Administrasi", "Area administrasi perpustakaan terhubung melalui sistem autentikasi resmi sekolah. Silakan hubungi petugas perpustakaan untuk akses layanan anggota."));
-    document.getElementById("hero-login").addEventListener("click", () => showInfo("Login Anggota", "Layanan login anggota memerlukan sistem autentikasi resmi sekolah. Untuk bantuan, silakan hubungi petugas perpustakaan."));
-    document.getElementById("video-button").addEventListener("click", () => showInfo("Video Profil", "Video profil perpustakaan dapat ditayangkan melalui kanal resmi sekolah saat tersedia."));
-    document.querySelectorAll(".read-ebook").forEach(button => button.addEventListener("click", () => showInfo(button.dataset.ebook, "Ebook pilihan ini tersedia sebagai koleksi digital contoh. Hubungi petugas perpustakaan untuk akses bacaan resmi.")));
+        .search-box {
+            max-width: 800px;
+            margin: 30px auto 0;
+            display: flex;
+            background: white;
+            padding: 5px;
+            border-radius: 50px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
 
-    document.getElementById("mobile-menu-toggle").addEventListener("click", () => document.getElementById("mobile-menu").classList.toggle("hidden"));
-    document.querySelectorAll("#mobile-menu a").forEach(link => link.addEventListener("click", () => document.getElementById("mobile-menu").classList.add("hidden")));
+        .search-box input {
+            flex: 1;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            outline: none;
+            font-size: 1rem;
+        }
 
-    document.getElementById("dark-toggle").addEventListener("click", () => {
-      document.body.classList.toggle("dark");
-      const isDark = document.body.classList.contains("dark");
-      document.getElementById("dark-toggle").setAttribute("aria-label", isDark ? "Aktifkan mode terang" : "Aktifkan mode gelap");
-    });
+        .search-box button {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
 
-    document.querySelectorAll(".faq-item button").forEach(button => button.addEventListener("click", () => button.closest(".faq-item").classList.toggle("open")));
+        .search-box button:hover { background: var(--primary); }
 
-    let galleryIndex = 0;
-    const gallerySlides = document.querySelectorAll(".gallery-slide");
-    function showGallery(index) {
-      galleryIndex = (index + gallerySlides.length) % gallerySlides.length;
-      gallerySlides.forEach((slide, i) => slide.classList.toggle("active", i === galleryIndex));
-    }
-    document.getElementById("gallery-prev").addEventListener("click", () => showGallery(galleryIndex - 1));
-    document.getElementById("gallery-next").addEventListener("click", () => showGallery(galleryIndex + 1));
+        /* Main Content */
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
 
-    let testimonialIndex = 0;
-    const testimonials = document.querySelectorAll(".testimonial");
-    const dots = document.querySelectorAll(".testimonial-dot");
-    function showTestimonial(index) {
-      testimonialIndex = index;
-      testimonials.forEach((item, i) => item.classList.toggle("active", i === index));
-      dots.forEach((dot, i) => { dot.classList.toggle("bg-[#0D47A1]", i === index); dot.classList.toggle("bg-slate-300", i !== index); });
-    }
-    dots.forEach((dot, index) => dot.addEventListener("click", () => showTestimonial(index)));
+        .section-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+        }
 
-    document.querySelectorAll(".modal").forEach(modal => modal.addEventListener("click", event => { if (event.target === modal) modal.classList.remove("show"); }));
-    filterCatalog();
-    lucide.createIcons();
-  </script>
- </body>
+        /* Book Cards */
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 25px;
+        }
+
+        .book-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .book-card:hover { transform: translateY(-10px); box-shadow: 0 12px 20px rgba(0,0,0,0.1); }
+
+        .book-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        .book-info { padding: 15px; flex-grow: 1; display: flex; flex-direction: column; }
+        
+        .book-tag {
+            font-size: 0.7rem;
+            background: #dcfce7;
+            color: #166534;
+            padding: 2px 8px;
+            border-radius: 4px;
+            width: fit-content;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .book-title {
+            font-weight: bold;
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .btn-read {
+            margin-top: auto;
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .btn-read:hover { background: var(--secondary); }
+
+        /* Loading Spinner */
+        #loader {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 600px) {
+            .book-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+            header h1 { font-size: 1.5rem; }
+            .search-box { flex-direction: column; border-radius: 20px; }
+            .search-box input { border-radius: 20px 20px 0 0; }
+            .search-box button { border-radius: 0 0 20px 20px; padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Perpustakaan Digital SMKN Bojonggambir</h1>
+        <p>Akses ke Jutaan Buku secara Gratis dan Legal</p>
+        
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Ketik jurusan, judul buku, atau pengarang (Contoh: Teknik Mesin, Novel)...">
+            <button onclick="searchGlobalBooks()"><i class="fas fa-search"></i> Cari</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Koleksi Wajib SMK -->
+        <div id="localSection">
+            <div class="section-title">
+                <h2><i class="fas fa-star text-warning" style="color: var(--accent);"></i> Buku Utama SMK</h2>
+            </div>
+            <div class="book-grid" id="localBookGrid">
+                <!-- Diisi oleh JS -->
+            </div>
+        </div>
+
+        <!-- Hasil Pencarian Global -->
+        <div id="globalSection" style="margin-top: 50px;">
+            <div class="section-title">
+                <h2 id="globalTitle"><i class="fas fa-globe"></i> Rekomendasi Literasi Digital</h2>
+            </div>
+            <div id="loader"><i class="fas fa-spinner fa-spin fa-2x"></i><br><br>Mencari buku di database global...</div>
+            <div class="book-grid" id="globalBookGrid">
+                <!-- Hasil API masuk di sini -->
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p><strong>SMK Negeri Bojonggambir</strong></p>
+        <p>Menuju Vokasi Berbasis Digital</p>
+        <div style="margin-top: 20px; font-size: 0.8rem; opacity: 0.6;">
+            Dihubungkan dengan Google Books API & Kemendikbud SIBI
+        </div>
+    </footer>
+
+    <script>
+        // 1. DATA BUKU UTAMA (Manual untuk kurikulum SMK)
+        const localBooks = [
+            { judul: "Informatika SMK Kelas X", cat: "TKJ/RPL", img: "https://buku.kemdikbud.go.id/assets/pelajaran/Informatika-BG-KLS-X.jpg", link: "https://buku.kemdikbud.go.id/katalog/informatika-untuk-smk-kelas-x" },
+            { judul: "Dasar Teknik Otomotif", cat: "TSM/TKR", img: "https://buku.kemdikbud.go.id/assets/pelajaran/Dasar-dasar-Teknik-Otomotif-BS-KLS-X-1.jpg", link: "https://buku.kemdikbud.go.id/katalog/dasar-dasar-teknik-otomotif-semester-1" },
+            { judul: "Dasar Akuntansi & Keuangan", cat: "AKL", img: "https://buku.kemdikbud.go.id/assets/pelajaran/Dasar-dasar-Akuntansi-dan-Keuangan-Lembaga-BS-KLS-X-1.jpg", link: "https://buku.kemdikbud.go.id/katalog/dasar-dasar-akuntansi-dan-keuangan-lembaga-semester-1" },
+            { judul: "Bahasa Indonesia", cat: "WAJIB", img: "https://buku.kemdikbud.go.id/assets/pelajaran/Bahasa-Indonesia-BS-KLS-X.jpg", link: "https://buku.kemdikbud.go.id/katalog/Cerdas-Cergas-Berbahasa-dan-Bersastra-Indonesia-untuk-SMA-SMK-Kelas-X" },
+            { judul: "Matematika SMK X", cat: "WAJIB", img: "https://buku.kemdikbud.go.id/assets/pelajaran/Matematika-BS-KLS-X.jpg", link: "https://buku.kemdikbud.go.id/katalog/matematika-untuk-smasmk-kelas-x" }
+        ];
+
+        // Tampilkan Buku Lokal
+        function loadLocalBooks() {
+            const grid = document.getElementById('localBookGrid');
+            localBooks.forEach(book => {
+                grid.innerHTML += createCard(book.judul, book.cat, book.img, book.link);
+            });
+        }
+
+        function createCard(title, cat, img, link) {
+            return `
+                <div class="book-card">
+                    <img src="${img}" alt="Cover" onerror="this.src='https://via.placeholder.com/200x280?text=Buku+SMK'">
+                    <div class="book-info">
+                        <span class="book-tag">${cat}</span>
+                        <div class="book-title">${title}</div>
+                        <a href="${link}" target="_blank" class="btn-read"><i class="fas fa-eye"></i> Baca Sekarang</a>
+                    </div>
+                </div>
+            `;
+        }
+
+        // 2. FUNGSI PENCARIAN GLOBAL (API)
+        async function searchGlobalBooks() {
+            const query = document.getElementById('searchInput').value;
+            const grid = document.getElementById('globalBookGrid');
+            const loader = document.getElementById('loader');
+            const title = document.getElementById('globalTitle');
+
+            if (!query.trim()) return alert("Silakan ketik sesuatu untuk mencari...");
+
+            grid.innerHTML = "";
+            loader.style.display = "block";
+            title.innerText = `Hasil Pencarian: "${query}"`;
+
+            try {
+                // Modifikasi: Menambahkan '&langRestrict=id' agar mayoritas hasil berbahasa Indonesia
+                const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}&langRestrict=id&maxResults=20&orderBy=relevance`);
+                const data = await response.json();
+
+                loader.style.display = "none";
+
+                if (data.items && data.items.length > 0) {
+                    data.items.forEach(item => {
+                        const info = item.volumeInfo;
+                        const bookTitle = info.title || "Judul Tidak Diketahui";
+                        const cat = info.categories ? info.categories[0] : "Buku Umum";
+                        // Memastikan link gambar menggunakan HTTPS agar tidak diblokir browser
+                        let img = info.imageLinks ? info.imageLinks.thumbnail : "https://via.placeholder.com/200x280?text=No+Cover";
+                        img = img.replace(/^http:\/\//i, 'https://'); 
+                        const link = info.previewLink || "#"; 
+
+                        grid.innerHTML += createCard(bookTitle, cat, img, link);
+                    });
+                } else {
+                    grid.innerHTML = "<p style='grid-column: 1/-1; text-align: center; color: #64748b;'>Buku tidak ditemukan. Coba kata kunci yang lebih umum.</p>";
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                loader.style.display = "none";
+                grid.innerHTML = "<p style='grid-column: 1/-1; text-align: center; color: #ef4444;'>Gagal mengambil data dari internet. Periksa koneksi Anda.</p>";
+            }
+        }
+
+        // Fitur tambahan: Memungkinkan pencarian dengan menekan tombol "Enter" di keyboard
+        document.getElementById('searchInput').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                searchGlobalBooks();
+            }
+        });
+
+        // Jalankan saat load awal
+        window.onload = () => {
+            loadLocalBooks();
+            // Default search agar halaman tidak kosong
+            document.getElementById('searchInput').value = "Teknologi Informasi";
+            searchGlobalBooks();
+        };
+    </script>
+</body>
 </html>
