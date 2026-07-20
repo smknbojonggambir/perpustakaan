@@ -24,45 +24,48 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
-        .user-status {
-            font-size: 0.9rem;
-        }
+        .logo { font-weight: 600; font-size: 1.1rem; }
+        .user-status { font-size: 0.9rem; margin-right: 15px; }
         .btn-auth {
             background-color: #ff9800;
             color: white;
             border: none;
-            padding: 0.5rem 1rem;
+            padding: 0.6rem 1.2rem;
             border-radius: 4px;
             cursor: pointer;
             font-weight: 600;
+            transition: background-color 0.3s;
         }
-        .btn-logout {
-            background-color: #e91e63;
-        }
+        .btn-auth:hover { background-color: #e68a00; }
+        .btn-logout { background-color: #e91e63; }
+        .btn-logout:hover { background-color: #c2185b; }
 
         header {
             background-color: #1e3c72;
             color: white;
-            padding: 2.5rem 1rem;
+            padding: 3rem 1rem;
             text-align: center;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        header h1 { font-size: 2.2rem; margin-bottom: 0.5rem; }
+        header h1 { font-size: 2.2rem; margin-bottom: 0.8rem; line-height: 1.3; }
+        header p { opacity: 0.9; margin-bottom: 1.5rem; }
 
         .search-container {
-            margin-top: 1.5rem;
             display: flex;
             justify-content: center;
             gap: 10px;
             flex-wrap: wrap;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .search-container input {
             padding: 0.8rem 1.2rem;
-            width: 100%;
-            max-width: 400px;
+            flex: 1;
+            min-width: 250px;
             border: none;
             border-radius: 5px;
             font-size: 1rem;
@@ -77,18 +80,20 @@
             border-radius: 5px;
             cursor: pointer;
             font-weight: 600;
+            transition: background-color 0.3s;
         }
+        .search-container button:hover { background-color: #e68a00; }
 
         .container { 
             max-width: 1200px; 
             margin: 2rem auto; 
-            padding: 0 1rem; 
+            padding: 0 1.5rem; 
             flex-grow: 1;
             width: 100%;
         }
         
-        .status-message { text-align: center; margin-bottom: 2rem; font-size: 1.1rem; color: #666; }
-        .book-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 2rem; }
+        .status-message { text-align: center; margin-bottom: 2rem; font-size: 1.1rem; color: #555; font-weight: 500;}
+        .book-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 2rem; }
 
         .book-card {
             background: white;
@@ -97,28 +102,30 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             display: flex;
             flex-direction: column;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .book-card:hover { transform: translateY(-5px); box-shadow: 0 8px 16px rgba(0,0,0,0.2); }
+        .book-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
 
-        .book-cover { height: 250px; background-color: #eee; background-size: cover; background-position: center; border-bottom: 1px solid #ddd; }
+        .book-cover { height: 280px; background-color: #eee; background-size: cover; background-position: center; border-bottom: 1px solid #eee; }
         .book-info { padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1; }
         .book-author { font-size: 0.85rem; color: #1e3c72; font-weight: 600; margin-bottom: 0.5rem; }
-        .book-title { font-size: 1.1rem; margin-bottom: 1rem; color: #222; }
+        .book-title { font-size: 1.1rem; margin-bottom: 1.5rem; color: #222; line-height: 1.4; }
         
         .btn-read {
             margin-top: auto;
             background-color: #2a5298;
             color: white;
             text-align: center;
-            padding: 0.7rem;
+            padding: 0.8rem;
             text-decoration: none;
             border-radius: 5px;
             font-size: 0.9rem;
             font-weight: 600;
             cursor: pointer;
             border: none;
+            transition: background-color 0.3s;
         }
+        .btn-read:hover { background-color: #1e3c72; }
 
         /* Modal Authentication */
         .modal {
@@ -129,31 +136,46 @@
             justify-content: center;
             align-items: center;
             z-index: 1000;
+            backdrop-filter: blur(3px);
         }
         .modal-content {
             background-color: white;
-            padding: 2rem;
-            border-radius: 8px;
+            padding: 2.5rem;
+            border-radius: 10px;
             width: 90%;
             max-width: 400px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: fadeIn 0.3s ease;
         }
-        .modal-content h2 { margin-bottom: 1rem; color: #1e3c72; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .modal-content h2 { margin-bottom: 0.5rem; color: #1e3c72; }
         .modal-content input {
             width: 100%;
-            padding: 0.7rem;
-            margin-bottom: 1rem;
+            padding: 0.8rem;
+            margin-top: 1rem;
+            margin-bottom: 1.5rem;
             border: 1px solid #ccc;
-            border-radius: 4px;
+            border-radius: 5px;
+            font-size: 1rem;
         }
         .modal-actions {
             display: flex;
             justify-content: flex-end;
             gap: 10px;
         }
-        .btn-cancel { background-color: #bbb; color: white; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer;}
+        .btn-cancel { background-color: #bbb; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 5px; cursor: pointer; transition: 0.3s; font-weight:600;}
+        .btn-cancel:hover { background-color: #999; }
 
-        footer { background-color: #222; color: white; text-align: center; padding: 1.5rem; margin-top: 3rem; font-size: 0.9rem; }
+        footer { background-color: #112244; color: #ddd; text-align: center; padding: 1.5rem; margin-top: auto; font-size: 0.9rem; }
+        
+        @media (max-width: 600px) {
+            nav { flex-direction: column; gap: 10px; }
+            .user-status { display: block; margin-bottom: 10px; text-align: center;}
+        }
     </style>
 </head>
 <body>
@@ -169,11 +191,13 @@
 
     <header>
         <h1>Perpustakaan Digital<br>SMK Negeri Bojonggambir</h1>
-        <p>Silahkan Login Menggunakan NIS Anda untuk Membaca Buku & Modul</p>
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Cari judul buku atau mata pelajaran...">
-            <button onclick="cariBuku()">Cari Buku</button>
-        </div>
+        <p>Silakan Login Menggunakan NIS Anda untuk Membaca Buku & Modul</p>
+        
+        <!-- Diubah menjadi tag form agar support tombol "Go/Enter" di HP -->
+        <form class="search-container" id="searchForm">
+            <input type="text" id="searchInput" placeholder="Cari judul buku atau mata pelajaran..." required>
+            <button type="submit">Cari Buku</button>
+        </form>
     </header>
 
     <div class="container">
@@ -185,12 +209,15 @@
     <div class="modal" id="loginModal">
         <div class="modal-content">
             <h2 id="modalTitle">Login Siswa</h2>
-            <p style="font-size: 0.85rem; color:#666; margin-bottom:1rem;">Masukkan NIS terdaftar Anda untuk mulai membaca.</p>
-            <input type="text" id="nisInput" placeholder="Masukkan Nomor Induk Siswa (NIS)">
-            <div class="modal-actions">
-                <button class="btn-cancel" onclick="closeModal()">Batal</button>
-                <button class="btn-auth" onclick="prosesLogin()">Masuk</button>
-            </div>
+            <p style="font-size: 0.9rem; color:#666;">Masukkan NIS terdaftar Anda untuk mulai membaca.</p>
+            
+            <form id="loginForm">
+                <input type="text" id="nisInput" placeholder="Masukkan Nomor Induk Siswa (NIS)" required autocomplete="off">
+                <div class="modal-actions">
+                    <button type="button" class="btn-cancel" onclick="closeModal()">Batal</button>
+                    <button type="submit" class="btn-auth">Masuk</button>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -199,10 +226,10 @@
     </footer>
 
     <script>
-        // GANTI INI DENGAN URL WEB APP GOOGLE APPS SCRIPT ANDA
+        // URL WEB APP GOOGLE APPS SCRIPT ANDA
         const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxQ0volANGF-ZHd8jNIJ_1t6Oxa42ZIIZkk63ral-tywnbsy6X182Tu3rUZw6FkaKOMnA/exec";
 
-        // Database Siswa Internal (Data yang Anda Berikan)
+        // Database Siswa Internal
         const databaseSiswa = [
             {nis:"102505330", nama:"AIP PAEJA", kelas:"X APHP"},
             {nis:"113010313", nama:"DEVA", kelas:"X APHP"},
@@ -307,12 +334,19 @@
 
         function openModal() {
             document.getElementById('loginModal').style.display = 'flex';
+            document.getElementById('nisInput').focus();
         }
 
         function closeModal() {
             document.getElementById('loginModal').style.display = 'none';
             document.getElementById('nisInput').value = '';
         }
+
+        // Handle form login submit
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Mencegah reload halaman
+            prosesLogin();
+        });
 
         function prosesLogin() {
             const nisValue = document.getElementById('nisInput').value.trim();
@@ -332,14 +366,16 @@
         }
 
         function prosesLogout() {
-            currentUser = null;
-            localStorage.removeItem('siswaSession');
-            document.getElementById('userStatus').textContent = "Status: Belum Login.";
-            const btn = document.getElementById('authBtn');
-            btn.textContent = "Login / Daftar";
-            btn.className = "btn-auth";
-            btn.onclick = openModal;
-            alert("Anda telah keluar.");
+            if(confirm("Apakah Anda yakin ingin keluar?")) {
+                currentUser = null;
+                localStorage.removeItem('siswaSession');
+                document.getElementById('userStatus').textContent = "Status: Belum Login.";
+                
+                const btn = document.getElementById('authBtn');
+                btn.textContent = "Login / Daftar";
+                btn.className = "btn-auth";
+                btn.onclick = openModal;
+            }
         }
 
         function updateAuthUI() {
@@ -356,11 +392,9 @@
         async function rekamAktivitasBaca(judulBuku, linkBuku) {
             if (!currentUser) return;
 
-            // Mengirim data menggunakan parameter GET agar tidak terkena kendala CORS
             const urlPerekam = `${APPS_SCRIPT_URL}?nis=${encodeURIComponent(currentUser.nis)}&nama=${encodeURIComponent(currentUser.nama)}&kelas=${encodeURIComponent(currentUser.kelas)}&judul=${encodeURIComponent(judulBuku)}&link=${encodeURIComponent(linkBuku)}`;
             
             try {
-                // Proses pengiriman di latar belakang (Background fetch)
                 await fetch(urlPerekam, { mode: 'no-cors' });
                 console.log("Aktivitas membaca berhasil direkam.");
             } catch (err) {
@@ -373,26 +407,32 @@
                 alert("Perhatian! Anda harus Login menggunakan NIS terlebih dahulu sebelum membaca buku.");
                 openModal();
             } else {
-                // 1. Kirim data ke Google Sheet
                 rekamAktivitasBaca(judul, link);
-                // 2. Buka jendela preview buku
                 window.open(link, '_blank');
             }
         }
+
+        // Handle Search Form
+        document.getElementById('searchForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const inputVal = document.getElementById('searchInput').value.trim();
+            if (inputVal !== '') fetchBooks(inputVal);
+        });
 
         // FUNGSI LOAD API GOOGLE BOOKS
         async function fetchBooks(keyword) {
             const container = document.getElementById('bookContainer');
             const statusMsg = document.getElementById('statusMessage');
+            
             container.innerHTML = '';
             statusMsg.textContent = 'Mencari koleksi tentang "' + keyword + '"...';
 
             try {
-                const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${keyword}&maxResults=12`);
+                const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(keyword)}&maxResults=12`);
                 const data = await response.json();
 
-                if (!data.items) {
-                    statusMsg.textContent = 'Buku tidak ditemukan. Coba kata kunci lain.';
+                if (!data.items || data.items.length === 0) {
+                    statusMsg.textContent = 'Buku tidak ditemukan. Coba gunakan kata kunci lain.';
                     return;
                 }
 
@@ -402,39 +442,54 @@
                     const info = item.volumeInfo;
                     const title = info.title || 'Judul Tidak Diketahui';
                     const author = info.authors ? info.authors.join(', ') : 'Penulis Tidak Diketahui';
+                    
                     let cover = 'https://via.placeholder.com/150x200?text=Tidak+Ada+Sampul';
-                    if (info.imageLinks) {
+                    if (info.imageLinks && info.imageLinks.thumbnail) {
                         cover = info.imageLinks.thumbnail.replace('http:', 'https:');
                     }
                     const previewLink = info.previewLink || '#';
 
+                    // Menggunakan DOM API (lebih aman dari karakter kutip/quotes di judul buku)
                     const bookCard = document.createElement('div');
                     bookCard.className = 'book-card';
-                    bookCard.innerHTML = `
-                        <div class="book-cover" style="background-image: url('${cover}');"></div>
-                        <div class="book-info">
-                            <span class="book-author">${author}</span>
-                            <h3 class="book-title">${title}</h3>
-                            <button class="btn-read" onclick="aksiBacaBuku('${title.replace(/'/g, "\\'")}', '${previewLink}')">Baca Buku</button>
-                        </div>
-                    `;
+
+                    const coverDiv = document.createElement('div');
+                    coverDiv.className = 'book-cover';
+                    coverDiv.style.backgroundImage = `url('${cover}')`;
+
+                    const infoDiv = document.createElement('div');
+                    infoDiv.className = 'book-info';
+
+                    const authorSpan = document.createElement('span');
+                    authorSpan.className = 'book-author';
+                    authorSpan.textContent = author;
+
+                    const titleH3 = document.createElement('h3');
+                    titleH3.className = 'book-title';
+                    titleH3.textContent = title;
+
+                    const readBtn = document.createElement('button');
+                    readBtn.className = 'btn-read';
+                    readBtn.textContent = 'Baca Buku';
+                    
+                    // Event listener di-bind langsung, tidak lewat string innerHTML (Mencegah error)
+                    readBtn.addEventListener('click', () => aksiBacaBuku(title, previewLink));
+
+                    infoDiv.appendChild(authorSpan);
+                    infoDiv.appendChild(titleH3);
+                    infoDiv.appendChild(readBtn);
+
+                    bookCard.appendChild(coverDiv);
+                    bookCard.appendChild(infoDiv);
+
                     container.appendChild(bookCard);
                 });
 
             } catch (error) {
                 console.error('Error:', error);
-                statusMsg.textContent = 'Gagal memuat data. Periksa internet Anda.';
+                statusMsg.textContent = 'Gagal memuat data. Periksa koneksi internet Anda.';
             }
         }
-
-        function cariBuku() {
-            const inputVal = document.getElementById('searchInput').value;
-            if (inputVal.trim() !== '') fetchBooks(inputVal);
-        }
-
-        document.getElementById('searchInput').addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') cariBuku();
-        });
     </script>
 </body>
 </html>
