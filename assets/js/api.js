@@ -3,7 +3,7 @@
  */
 const API_CONFIG = {
     // Replace with your deployed Apps Script Web App URL
-    ENDPOINT: localStorage.getItem('gas_api_url') || 'https://script.google.com/macros/s/AKfycbx8Mr_IqcI3PY2BU-FkYV1kP-95SxRWW5usVBull1sBm8kRle7WAP21bRQ65kq7w47m/exec',
+    ENDPOINT: localStorage.getItem('gas_api_url') || 'https://script.google.com/macros/s/AKfycbyFKcBAaM1QVpkzcG1w26UgRTdxQfaUn8ti_pAJWMT73i3PgsRnbwJMBIOPBSPChya3/exec',
     MOCK_MODE: false
 };
 
