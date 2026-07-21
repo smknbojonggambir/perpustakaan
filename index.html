@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="id" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Library - SMKN Bojonggambir</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="manifest" href="manifest.json">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: { brand: { 50: '#f0f9ff', 500: '#0284c7', 600: '#0284c7', 700: '#0369a1' } } } }
+    }
+  </script>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col font-sans transition-colors duration-200">
+
+  <!-- Header / Navbar -->
+  <header class="sticky top-0 z-50 glass border-b border-slate-200 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-brand-600 flex items-center justify-center text-white shadow-md shadow-brand-500/20">
+          <i data-lucide="book-open" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <span class="font-bold text-lg leading-none block text-slate-900 dark:text-white">Digital Library</span>
+          <span class="text-xs text-brand-600 font-medium">SMKN Bojonggambir</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center space-x-6 text-sm font-semibold text-slate-600 dark:text-slate-300">
+        <a href="index.html" class="text-brand-600">Beranda</a>
+        <a href="koleksi.html" class="hover:text-brand-600 transition">Koleksi</a>
+        <a href="kategori.html" class="hover:text-brand-600 transition">Kategori</a>
+        <a href="berita.html" class="hover:text-brand-600 transition">Berita</a>
+        <a href="buku-tamu.html" class="hover:text-brand-600 transition">Buku Tamu</a>
+        <a href="faq.html" class="hover:text-brand-600 transition">FAQ</a>
+        <a href="kontak.html" class="hover:text-brand-600 transition">Kontak</a>
+      </nav>
+
+      <div class="flex items-center space-x-3">
+        <button class="theme-toggle p-2 rounded-xl text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+          <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+          <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+        </button>
+        <a href="login.html" class="px-4 py-2 text-sm font-semibold text-white bg-brand-600 hover:bg-brand-700 rounded-xl shadow-sm transition">Masuk</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16">
+    <!-- Hero Banner -->
+    <section class="text-center space-y-6 py-12 relative">
+      <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-brand-50 dark:bg-slate-800 border border-brand-200 dark:border-slate-700 text-brand-600 text-xs font-semibold">
+        <i data-lucide="sparkles" class="w-4 h-4"></i>
+        <span>Perpustakaan Digital SMKN Bojonggambir</span>
+      </div>
+      <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white max-w-3xl mx-auto leading-tight">
+        Akses Ribuan Literasi Digital <span class="text-brand-600">Kapan Saja</span>
+      </h1>
+      <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-base md:text-lg">
+        Eksplorasi buku teks kejuruan, fiksi, jurnal penelitian, dan modul pembelajaran secara langsung dan mandiri.
+      </p>
+
+      <!-- Quick Search Bar -->
+      <form action="pencarian.html" method="GET" class="max-w-2xl mx-auto flex items-center p-2 rounded-2xl bg-white dark:bg-slate-800 shadow-xl border border-slate-200 dark:border-slate-700">
+        <div class="p-3 text-slate-400"><i data-lucide="search" class="w-5 h-5"></i></div>
+        <input type="text" name="q" placeholder="Cari berdasarkan Judul Buku, Penulis, atau ISBN..." class="w-full bg-transparent border-none text-sm text-slate-800 dark:text-white focus:outline-none">
+        <button type="submit" class="px-6 py-3 bg-brand-600 text-white font-semibold rounded-xl hover:bg-brand-700 transition text-sm">Cari</button>
+      </form>
+    </section>
+
+    <!-- Stat Grid -->
+    <section class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 text-center shadow-sm">
+        <i data-lucide="book" class="w-8 h-8 text-brand-600 mx-auto mb-2"></i>
+        <h3 class="text-3xl font-extrabold text-slate-900 dark:text-white">1,250+</h3>
+        <p class="text-xs text-slate-500 font-medium">Koleksi Judul Buku</p>
+      </div>
+      <div class="p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 text-center shadow-sm">
+        <i data-lucide="users" class="w-8 h-8 text-brand-600 mx-auto mb-2"></i>
+        <h3 class="text-3xl font-extrabold text-slate-900 dark:text-white">850+</h3>
+        <p class="text-xs text-slate-500 font-medium">Anggota Terdaftar</p>
+      </div>
+      <div class="p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 text-center shadow-sm">
+        <i data-lucide="download" class="w-8 h-8 text-brand-600 mx-auto mb-2"></i>
+        <h3 class="text-3xl font-extrabold text-slate-900 dark:text-white">4,300+</h3>
+        <p class="text-xs text-slate-500 font-medium">Total Akses / Unduhan</p>
+      </div>
+      <div class="p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 text-center shadow-sm">
+        <i data-lucide="eye" class="w-8 h-8 text-brand-600 mx-auto mb-2"></i>
+        <h3 class="text-3xl font-extrabold text-slate-900 dark:text-white">120+</h3>
+        <p class="text-xs text-slate-500 font-medium">Pengunjung Hari Ini</p>
+      </div>
+    </section>
+
+    <!-- Buku Terbaru -->
+    <section class="space-y-6">
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Buku Terbaru</h2>
+          <p class="text-xs text-slate-500">Buku yang baru ditambahkan ke dalam pustaka digital</p>
+        </div>
+        <a href="koleksi.html" class="text-sm font-semibold text-brand-600 hover:underline flex items-center space-x-1">
+          <span>Lihat Semua</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+
+      <div id="latestBooksContainer" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+        <!-- Sample Cards -->
+        <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition">
+          <div class="h-48 bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-slate-400">
+            <i data-lucide="book-open" class="w-12 h-12"></i>
+          </div>
+          <div class="p-4 space-y-2">
+            <span class="text-[10px] uppercase tracking-wider font-bold text-brand-600 bg-brand-50 dark:bg-slate-700 px-2 py-0.5 rounded">TJKT</span>
+            <h4 class="font-bold text-sm text-slate-900 dark:text-white truncate">Pemrograman Web & Perangkat Bergerak</h4>
+            <p class="text-xs text-slate-500 truncate">Ahmad Sahid, M.Kom</p>
+            <a href="detail.html?id=BK001" class="block w-full py-2 text-center text-xs font-semibold bg-brand-600 text-white rounded-xl hover:bg-brand-700 transition mt-2">Baca Buku</a>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition">
+          <div class="h-48 bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-slate-400">
+            <i data-lucide="book-open" class="w-12 h-12"></i>
+          </div>
+          <div class="p-4 space-y-2">
+            <span class="text-[10px] uppercase tracking-wider font-bold text-brand-600 bg-brand-50 dark:bg-slate-700 px-2 py-0.5 rounded">Otomotif</span>
+            <h4 class="font-bold text-sm text-slate-900 dark:text-white truncate">Pemeliharaan Mesin Sepeda Motor</h4>
+            <p class="text-xs text-slate-500 truncate">Dedi Kurniawan, S.T.</p>
+            <a href="detail.html?id=BK002" class="block w-full py-2 text-center text-xs font-semibold bg-brand-600 text-white rounded-xl hover:bg-brand-700 transition mt-2">Baca Buku</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-slate-900 text-slate-400 py-10 border-t border-slate-800 mt-12">
+    <div class="max-w-7xl mx-auto px-4 text-center text-xs">
+      &copy; 2026 Digital Library SMKN Bojonggambir. All rights reserved.
+    </div>
+  </footer>
+
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

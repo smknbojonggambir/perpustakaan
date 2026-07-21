@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id" class="light">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - Digital Library</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 min-h-screen flex">
+
+  <aside class="w-64 bg-white dark:bg-slate-800 border-r border-slate-200 dark:border-slate-700 p-6 flex flex-col justify-between hidden md:flex">
+    <div class="space-y-6">
+      <div class="flex items-center space-x-3">
+        <div class="w-8 h-8 bg-sky-600 text-white rounded-xl flex items-center justify-center font-bold">P</div>
+        <span class="font-bold text-sm">Dashboard Digital</span>
+      </div>
+      <nav class="space-y-1 text-xs font-semibold">
+        <a href="#" class="block p-3 rounded-xl bg-sky-50 dark:bg-slate-700 text-sky-600">Overview</a>
+        <a href="koleksi.html" class="block p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-700">Kelola Buku</a>
+        <a href="buku-tamu.html" class="block p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-700">Buku Tamu</a>
+        <a href="profil.html" class="block p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-700">Profil Saya</a>
+      </nav>
+    </div>
+    <a href="index.html" class="text-xs text-rose-500 font-semibold">Keluar</a>
+  </aside>
+
+  <main class="flex-1 p-8 space-y-6">
+    <div class="flex items-center justify-between">
+      <h1 class="text-2xl font-bold">Selamat Datang, User</h1>
+      <a href="index.html" class="text-xs text-sky-600">Ke Website Utama</a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700">
+        <h3 class="text-slate-400 text-xs font-semibold">Buku Sedang Dibaca</h3>
+        <p class="text-2xl font-bold mt-2">3 Judul</p>
+      </div>
+      <div class="p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700">
+        <h3 class="text-slate-400 text-xs font-semibold">Buku Favorit</h3>
+        <p class="text-2xl font-bold mt-2">12 Judul</p>
+      </div>
+      <div class="p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700">
+        <h3 class="text-slate-400 text-xs font-semibold">Total Waktu Baca</h3>
+        <p class="text-2xl font-bold mt-2">14 Jam 30 Mnt</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

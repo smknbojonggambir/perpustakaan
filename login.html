@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Digital Library SMKN Bojonggambir</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 min-h-screen flex items-center justify-center p-4">
+
+  <div class="w-full max-w-md bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-8 shadow-2xl space-y-6">
+    <div class="text-center space-y-2">
+      <div class="w-12 h-12 bg-sky-600 text-white rounded-2xl flex items-center justify-center mx-auto shadow-lg shadow-sky-500/30">
+        <i data-lucide="book-open" class="w-6 h-6"></i>
+      </div>
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Masuk Akun</h2>
+      <p class="text-xs text-slate-500">Digital Library SMKN Bojonggambir</p>
+    </div>
+
+    <form id="loginForm" class="space-y-4">
+      <div>
+        <label class="block text-xs font-semibold mb-1">Email / NISN / NIP</label>
+        <input type="email" id="email" required placeholder="user@smknbojonggambir.sch.id" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-sm focus:outline-none focus:border-sky-600">
+      </div>
+      <div>
+        <label class="block text-xs font-semibold mb-1">Kata Sandi</label>
+        <input type="password" id="password" required placeholder="••••••••" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-sm focus:outline-none focus:border-sky-600">
+      </div>
+
+      <div class="flex items-center justify-between text-xs">
+        <label class="flex items-center space-x-2 cursor-pointer">
+          <input type="checkbox" class="rounded text-sky-600">
+          <span>Ingat Saya</span>
+        </label>
+        <a href="#" class="text-sky-600 hover:underline">Lupa Password?</a>
+      </div>
+
+      <button type="submit" class="w-full py-3 bg-sky-600 text-white font-semibold rounded-xl hover:bg-sky-700 transition text-sm shadow-md shadow-sky-500/20">Masuk</button>
+    </form>
+
+    <div class="relative flex py-2 items-center">
+      <div class="flex-grow border-t border-slate-200 dark:border-slate-700"></div>
+      <span class="flex-shrink mx-4 text-xs text-slate-400">Atau</span>
+      <div class="flex-grow border-t border-slate-200 dark:border-slate-700"></div>
+    </div>
+
+    <button onclick="alert('Fitur Google Login siap dihubungkan dengan OAuth Google!')" class="w-full py-3 border border-slate-200 dark:border-slate-700 rounded-xl flex items-center justify-center space-x-2 text-sm font-semibold hover:bg-slate-50 dark:hover:bg-slate-700 transition">
+      <i data-lucide="chrome" class="w-4 h-4 text-red-500"></i>
+      <span>Masuk dengan Google</span>
+    </button>
+
+    <p class="text-center text-xs text-slate-500">
+      Belum memiliki akun? <a href="register.html" class="text-sky-600 font-semibold hover:underline">Daftar Sekarang</a>
+    </p>
+  </div>
+
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      
+      showToast('Memproses login...', 'info');
+      
+      // Fallback mock session for demonstration
+      const dummyUser = { id: 'USR001', nama: 'Siswa SMKN', email, role: 'Anggota' };
+      Auth.setUser(dummyUser);
+      showToast('Login berhasil!', 'success');
+      setTimeout(() => window.location.href = 'dashboard.html', 1000);
+    });
+  </script>
+</body>
+</html>

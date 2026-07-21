@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id" class="light">
+<head>
+  <meta charset="UTF-8">
+  <title>Koleksi Buku - Digital Library SMKN Bojonggambir</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col font-sans">
+  
+  <header class="sticky top-0 z-50 glass border-b border-slate-200 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="index.html" class="font-bold text-lg text-sky-600">Digital Library</a>
+      <a href="index.html" class="text-xs text-slate-500">Kembali ke Beranda</a>
+    </div>
+  </header>
+
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 py-8 space-y-6">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <h1 class="text-2xl font-bold">Koleksi Buku Lengkap</h1>
+      <div class="flex items-center space-x-2">
+        <input type="text" placeholder="Filter cepat..." class="px-4 py-2 rounded-xl border text-sm dark:bg-slate-800">
+        <select class="px-4 py-2 rounded-xl border text-sm dark:bg-slate-800">
+          <option>Semua Kategori</option>
+          <option>TJKT</option>
+          <option>Otomotif</option>
+          <option>Akuntansi</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6" id="catalogGrid">
+      <div class="bg-white dark:bg-slate-800 border rounded-2xl p-4 shadow-sm space-y-2">
+        <div class="h-40 bg-slate-200 dark:bg-slate-700 rounded-xl flex items-center justify-center"><i data-lucide="book" class="w-10 h-10 text-slate-400"></i></div>
+        <h3 class="font-bold text-sm">Dasar-Dasar Jaringan Komputer</h3>
+        <p class="text-xs text-slate-500">Kementerian Pendidikan</p>
+        <a href="detail.html?id=BK001" class="block text-center text-xs py-2 bg-sky-600 text-white rounded-xl">Detail</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

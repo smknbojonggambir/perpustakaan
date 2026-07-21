@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id" class="light">
+<head>
+  <meta charset="UTF-8">
+  <title>Detail Buku - Digital Library</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col">
+
+  <main class="flex-1 max-w-5xl w-full mx-auto px-4 py-8 space-y-8">
+    <a href="koleksi.html" class="inline-flex items-center space-x-2 text-sm text-sky-600 font-semibold">
+      <i data-lucide="arrow-left" class="w-4 h-4"></i>
+      <span>Kembali ke Koleksi</span>
+    </a>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 bg-white dark:bg-slate-800 p-8 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-xl">
+      <div class="space-y-4">
+        <div class="h-80 bg-slate-200 dark:bg-slate-700 rounded-2xl flex items-center justify-center text-slate-400">
+          <i data-lucide="book-open" class="w-20 h-20"></i>
+        </div>
+        <button onclick="alert('Membuka PDF Reader Google Drive...')" class="w-full py-3 bg-sky-600 text-white font-semibold rounded-xl hover:bg-sky-700 transition text-sm flex items-center justify-center space-x-2">
+          <i data-lucide="file-text" class="w-5 h-5"></i>
+          <span>Baca PDF Online</span>
+        </button>
+      </div>
+
+      <div class="md:col-span-2 space-y-4">
+        <span class="px-3 py-1 bg-sky-50 dark:bg-slate-700 text-sky-600 font-bold text-xs rounded-full">Teknik Jaringan Komputer</span>
+        <h1 class="text-3xl font-extrabold text-slate-900 dark:text-white">Pemrograman Web & Perangkat Bergerak</h1>
+        <p class="text-sm text-slate-500">Penulis: <span class="font-semibold text-slate-800 dark:text-slate-200">Ahmad Sahid, M.Kom</span></p>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 py-4 border-y border-slate-200 dark:border-slate-700 text-xs">
+          <div><span class="text-slate-400 block">Penerbit</span><span class="font-bold">Erlangga</span></div>
+          <div><span class="text-slate-400 block">Tahun</span><span class="font-bold">2023</span></div>
+          <div><span class="text-slate-400 block">ISBN</span><span class="font-bold">978-602-1234-56</span></div>
+        </div>
+
+        <div>
+          <h3 class="font-bold text-sm mb-2">Deskripsi Buku</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+            Buku ini dirancang khusus untuk siswa SMK konsentrasi keahlian Rekayasa Perangkat Lunak dan TJKT. Membahas konsep dasar pemrograman web (HTML, CSS, JavaScript) hingga integrasi API dan backend.
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
